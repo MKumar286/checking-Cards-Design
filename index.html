@@ -43,17 +43,19 @@ h3 {
     font-weight: 500;
 }
 
-/* FIXED CENTERED GRID LAYOUT:
-   Forces exactly 3 columns configured purely by 'max-content' (text fit).
-   Centers the entire structural block in the middle of the webpage.
+/* BULLETPROOF 3x6 LAYOUT SYSTEM:
+   Forces exactly 3 columns and 6 rows based on card contents.
+   Aligns the whole container structure in the center of the window.
 */
 .cards-container {
     display: grid;
     grid-template-columns: repeat(3, max-content); 
-    gap: 20px 35px; /* Vertical and horizontal gap between the slim items */
+    grid-template-rows: repeat(6, max-content);
+    grid-auto-flow: column; /* Tells browser to fill up columns first (downwards up to 6, then moves right) */
+    gap: 20px 35px; /* Vertical and horizontal gap spacing */
     max-width: 1200px;
     margin: 0 auto;
-    justify-content: center; /* Centers the 3 columns horizontally on the page */
+    justify-content: center; /* Centers the columns on the page */
 }
 
 /* Precise replication of the services card styling from Data 2.png */
@@ -112,10 +114,17 @@ h3 {
     transform: translateY(0);
 }
 
-/* Responsive fallback layout for standard tablets or phones */
-@media (max-width: 850px) {
+/* Fluid responsive layout logic for compact smaller devices */
+@media (max-width: 950px) {
     .cards-container {
-        grid-template-columns: max-content; /* Drops layout columns comfortably to 1 centralized stack */
+        grid-template-columns: repeat(2, max-content);
+        grid-template-rows: repeat(9, max-content);
+    }
+}
+@media (max-width: 650px) {
+    .cards-container {
+        grid-template-columns: max-content;
+        grid-template-rows: auto;
     }
 }
 </style>
@@ -132,7 +141,7 @@ h3 {
 <script>
 const csvLinks = {
     A:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT4Yx068ZzCU8j4ouN_73-tolfsyoAO0skZWsGSc_4oZbACSlNGtpBCfaGQkpZfWg/pub?gid=1507961296&single=true&output=csv",
-    B:"", C:"", D:"", E:"", F:"", G:"", H:"", I:"", J:", K:", L:", M:", N:", O:", P:", Q:", R:""
+    B:"", C:"", D:"", E:"", F:"", G:"", H:"", I:"", J:"", K:"", L:"", M:"", N:"", O:"", P:"", Q:"", R:""
 };
 
 const cardNames = {
