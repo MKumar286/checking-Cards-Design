@@ -5,30 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026-2027</title>
 
-<!-- Font Awesome for sleek corporate icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <style>
 body {
     margin: 0;
-    padding: 30px 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f4f7fc;
-    color: #333;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    /* Cinematic dark background to make the glowing liquid glass pop */
+    background: radial-gradient(circle at 50% 0%, #1a2236 0%, #0d111a 100%);
+    color: #fff;
+    min-height: 100vh;
 }
 
 h1 {
     text-align: center;
-    color: #0b3d91;
-    font-size: 2rem;
+    color: #ffffff;
+    font-size: 2.2rem;
     margin-bottom: 5px;
     font-weight: 700;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
 }
 
 h2 {
     text-align: center;
-    color: #555;
+    color: #a0aec0;
     font-size: 1.3rem;
     margin-top: 0;
     font-weight: 400;
@@ -36,99 +39,145 @@ h2 {
 
 h3 {
     text-align: center;
-    color: #777;
+    color: #718096;
     font-size: 1rem;
-    margin-bottom: 35px;
+    margin-bottom: 45px;
 }
 
-/* Decreased width by adding more columns and capping the max card size */
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 15px;
-    max-width: 1100px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Decreased length (height) and compressed padding */
+/* Luxury Liquid Glass Card Base */
 .card {
-    min-height: 70px;
-    border-radius: 12px;
+    min-height: 85px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 13px;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.25s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     text-align: center;
-    padding: 10px 12px;
+    padding: 15px 20px;
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
+    
+    /* Apple Fluid Glass Core Mechanics */
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    
+    /* Simulated refraction & fluid shape depths */
+    box-shadow: 
+        inset 0 20px 30px rgba(255, 255, 255, 0.15), 
+        inset 0 -10px 20px rgba(0, 0, 0, 0.4), 
+        0 10px 30px rgba(0, 0, 0, 0.5);
+    
+    transition: all 0.5s cubic-bezier(0.15, 0.85, 0.45, 1);
 }
 
-/* Scaled down icons to fit smaller dimensions */
-.card i {
-    font-size: 20px;
-    margin-bottom: 6px;
-    opacity: 0.95;
-    transition: transform 0.2s ease;
-}
-
-/* Linear overlay for premium depth */
+/* 3D Liquid Curvature Gloss Overlay */
 .card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.15));
+    top: 2px;
+    left: 4px;
+    right: 4px;
+    height: 38%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.03) 100%);
+    border-radius: 16px 16px 45% 45%;
     pointer-events: none;
 }
 
+/* Fluid Organic Glow Edge Outer Layer */
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1.5px; /* Subtle glowing bevel edge thickness */
+    background: var(--glow-gradient);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.8;
+    transition: opacity 0.5s ease;
+}
+
+/* Cinematic Icons */
+.card i {
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: #fff;
+    filter: drop-shadow(0 2px 8px var(--glow-shadow));
+    transition: transform 0.5s cubic-bezier(0.15, 0.85, 0.45, 1);
+}
+
+.card span {
+    letter-spacing: 0.3px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover Dynamics - Refraction shift & Fluid lift */
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    filter: brightness(1.1);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        inset 0 25px 35px rgba(255, 255, 255, 0.25), 
+        inset 0 -5px 15px rgba(0, 0, 0, 0.3), 
+        0 20px 40px rgba(var(--glow-shadow-rgb), 0.35);
 }
 
 .card:hover i {
-    transform: scale(1.1);
+    transform: scale(1.15) translateY(-2px);
 }
 
+.card:hover::after {
+    opacity: 1;
+}
+
+/* Premium Glass Datatable styling */
 table {
     width: 100%;
-    max-width: 1100px;
-    margin: 40px auto 0 auto;
+    max-width: 1200px;
+    margin: 50px auto 0 auto;
     border-collapse: collapse;
-    background: white;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 th, td {
-    border: 1px solid #eef2f7;
-    padding: 12px;
+    padding: 14px;
     text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 th {
-    background: #0b3d91;
-    color: white;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
     font-weight: 600;
+}
+
+td {
+    color: #cbd5e1;
 }
 
 .loading {
     text-align: center;
     margin-top: 20px;
     font-size: 20px;
-    color: #0b3d91;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
 }
 </style>
 </head>
@@ -146,71 +195,47 @@ th {
 <script>
 const csvLinks = {
     A:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT4Yx068ZzCU8j4ouN_73-tolfsyoAO0skZWsGSc_4oZbACSlNGtpBCfaGQkpZfWg/pub?gid=1507961296&single=true&output=csv",
-    B:"", C:"", D:"", E:"", F:"", G:"", H:"", I:"", J:"", K:"", L:"", M:"", N:"", O:"", P:"", Q:"", R:""
+    B:"", C:"", D:"", E:"", F:"", G:"", H:"", I:"", J:", K:"", L:"", M:"", N:"", O:"", P:"", Q:"", R:""
 };
 
-// Thick, deep, and rich solid-gradient color configurations
-const gradients = [
-    "linear-gradient(135deg, #0f172a, #1e3a8a)", // A - Deep Navy/Blue
-    "linear-gradient(135deg, #3b0764, #6d28d9)", // B - Deep Royal Purple
-    "linear-gradient(135deg, #450a0a, #991b1b)", // C - Rich Crimson Crimson
-    "linear-gradient(135deg, #022c22, #065f46)", // D - Dark Emerald
-    "linear-gradient(135deg, #7c2d12, #c2410c)", // E - Burnt Corporate Orange
-    "linear-gradient(135deg, #0c4a6e, #0369a1)", // F - Dark Tech Blue
-    "linear-gradient(135deg, #4c0519, #9f1239)", // G - Deep Maroon Wine
-    "linear-gradient(135deg, #1e1b4b, #3730a3)", // H - Indigo Core
-    "linear-gradient(135deg, #14532d, #166534)", // I - Forest Tech Green
-    "linear-gradient(135deg, #854d0e, #a16207)", // J - Deep Amber Gold
-    "linear-gradient(135deg, #2e1065, #5b21b6)", // K - Royal Violet
-    "linear-gradient(135deg, #115e59, #134e4a)", // L - Thick Teal Green
-    "linear-gradient(135deg, #9f1239, #be123c)", // M - Ruby Rose
-    "linear-gradient(135deg, #1e40af, #2563eb)", // N - Classic Cobalt
-    "linear-gradient(135deg, #312e81, #4338ca)", // O - Midnight Iris
-    "linear-gradient(135deg, #0f766e, #0d9488)", // P - Deep Cyan Teal
-    "linear-gradient(135deg, #92400e, #b45309)", // Q - Thick Ochre
-    "linear-gradient(135deg, #1f2937, #374151)"  // R - Industrial Slate Dark
+// Luxury Liquid Colors Setup (Background glass dye, Edge neon gradients, & Shadow effects)
+const liquidThemes = [
+    { bg: "rgba(16, 37, 76, 0.55)", edge: "linear-gradient(135deg, #3b82f6, #1d4ed8)", shadow: "#3b82f6", rgb: "59, 130, 246" }, // A
+    { bg: "rgba(61, 23, 112, 0.55)", edge: "linear-gradient(135deg, #a78bfa, #6d28d9)", shadow: "#a78bfa", rgb: "167, 139, 250" }, // B
+    { bg: "rgba(92, 18, 18, 0.55)", edge: "linear-gradient(135deg, #ef4444, #b91c1c)", shadow: "#ef4444", rgb: "239, 68, 68" }, // C
+    { bg: "rgba(11, 64, 43, 0.55)", edge: "linear-gradient(135deg, #34d399, #047857)", shadow: "#34d399", rgb: "52, 211, 153" }, // D
+    { bg: "rgba(94, 38, 11, 0.55)", edge: "linear-gradient(135deg, #fb923c, #c2410c)", shadow: "#fb923c", rgb: "251, 146, 60" }, // E
+    { bg: "rgba(12, 59, 87, 0.55)", edge: "linear-gradient(135deg, #38bdf8, #0369a1)", shadow: "#38bdf8", rgb: "56, 189, 248" }, // F
+    { bg: "rgba(76, 15, 36, 0.55)", edge: "linear-gradient(135deg, #fb7185, #be123c)", shadow: "#fb7185", rgb: "251, 113, 133" }, // G
+    { bg: "rgba(36, 31, 99, 0.55)", edge: "linear-gradient(135deg, #818cf8, #4338ca)", shadow: "#818cf8", rgb: "129, 140, 248" }, // H
+    { bg: "rgba(19, 61, 32, 0.55)", edge: "linear-gradient(135deg, #4ade80, #15803d)", shadow: "#4ade80", rgb: "74, 222, 128" }, // I
+    { bg: "rgba(79, 47, 10, 0.55)", edge: "linear-gradient(135deg, #fbbf24, #b45309)", shadow: "#fbbf24", rgb: "251, 191, 36" }, // J
+    { bg: "rgba(49, 18, 97, 0.55)", edge: "linear-gradient(135deg, #c084fc, #7c3aed)", shadow: "#c084fc", rgb: "192, 132, 252" }, // K
+    { bg: "rgba(13, 64, 61, 0.55)", edge: "linear-gradient(135deg, #2dd4bf, #0f766e)", shadow: "#2dd4bf", rgb: "45, 212, 191" }, // L
+    { bg: "rgba(89, 19, 40, 0.55)", edge: "linear-gradient(135deg, #fda4af, #e11d48)", shadow: "#fda4af", rgb: "253, 164, 175" }, // M
+    { bg: "rgba(19, 51, 115, 0.55)", edge: "linear-gradient(135deg, #60a5fa, #2563eb)", shadow: "#60a5fa", rgb: "96, 165, 250" }, // N
+    { bg: "rgba(40, 37, 105, 0.55)", edge: "linear-gradient(135deg, #a5b4fc, #4f46e5)", shadow: "#a5b4fc", rgb: "165, 180, 252" }, // O
+    { bg: "rgba(15, 69, 64, 0.55)", edge: "linear-gradient(135deg, #5eead4, #0d9488)", shadow: "#5eead4", rgb: "94, 234, 212" }, // P
+    { bg: "rgba(84, 43, 14, 0.55)", edge: "linear-gradient(135deg, #fcd34d, #92400e)", shadow: "#fcd34d", rgb: "252, 211, 77" }, // Q
+    { bg: "rgba(35, 41, 49, 0.55)", edge: "linear-gradient(135deg, #9ca3af, #374151)", shadow: "#9ca3af", rgb: "156, 163, 175" }  // R
 ];
 
 const cardNames = {
-    A:"Total Students Data",
-    B:"HR Contact Details",
-    C:"Training Programs",
-    D:"Placed Data with Offers",
-    E:"Capgemini",
-    F:"Cognizant",
-    G:"Enrollment Journey",
-    H:"IBM",
-    I:"Tech Mahindra",
-    J:"HCL",
-    K:"Oracle",
-    L:"Amazon",
-    M:"Google",
-    N:"Microsoft",
-    O:"KPIT",
-    P:"Zoho",
-    Q:"Hexaware",
-    R:"Genpact"
+    A:"Total Students Data", B:"HR Contact Details", C:"Training Programs",
+    D:"Placed Data with Offers", E:"Capgemini", F:"Cognizant",
+    G:"Enrollment Journey", H:"IBM", I:"Tech Mahindra",
+    J:"HCL", K:"Oracle", L:"Amazon",
+    M:"Google", N:"Microsoft", O:"KPIT",
+    P:"Zoho", Q:"Hexaware", R:"Genpact"
 };
 
 const cardIcons = {
-    A: '<i class="fa-solid fa-users"></i>',
-    B: '<i class="fa-solid fa-address-book"></i>',
-    C: '<i class="fa-solid fa-graduation-cap"></i>',
-    D: '<i class="fa-solid fa-file-signature"></i>',
-    E: '<i class="fa-solid fa-laptop-code"></i>',
-    F: '<i class="fa-solid fa-network-wired"></i>',
-    G: '<i class="fa-solid fa-route"></i>',
-    H: '<i class="fa-solid fa-server"></i>',
-    I: '<i class="fa-solid fa-gears"></i>',
-    J: '<i class="fa-solid fa-terminal"></i>',
-    K: '<i class="fa-solid fa-database"></i>',
-    L: '<i class="fa-brands fa-amazon"></i>',
-    M: '<i class="fa-brands fa-google"></i>',
-    N: '<i class="fa-brands fa-microsoft"></i>',
-    O: '<i class="fa-solid fa-car-battery"></i>',
-    P: '<i class="fa-solid fa-box-open"></i>',
-    Q: '<i class="fa-solid fa-cubes"></i>',
-    R: '<i class="fa-solid fa-chart-line"></i>'
+    A: '<i class="fa-solid fa-users"></i>', B: '<i class="fa-solid fa-address-book"></i>', C: '<i class="fa-solid fa-graduation-cap"></i>',
+    D: '<i class="fa-solid fa-file-signature"></i>', E: '<i class="fa-solid fa-laptop-code"></i>', F: '<i class="fa-solid fa-network-wired"></i>',
+    G: '<i class="fa-solid fa-route"></i>', H: '<i class="fa-solid fa-server"></i>', I: '<i class="fa-solid fa-gears"></i>',
+    J: '<i class="fa-solid fa-terminal"></i>', K: '<i class="fa-solid fa-database"></i>', L: '<i class="fa-brands fa-amazon"></i>',
+    M: '<i class="fa-brands fa-google"></i>', N: '<i class="fa-brands fa-microsoft"></i>', O: '<i class="fa-solid fa-car-battery"></i>',
+    P: '<i class="fa-solid fa-box-open"></i>', Q: '<i class="fa-solid fa-cubes"></i>', R: '<i class="fa-solid fa-chart-line"></i>'
 };
 
 const container = document.getElementById("cardsContainer");
@@ -218,7 +243,13 @@ const container = document.getElementById("cardsContainer");
 Object.keys(csvLinks).forEach((key, index) => {
     const card = document.createElement("div");
     card.className = "card";
-    card.style.background = gradients[index];
+    
+    // Inject custom properties into each asset context window dynamically
+    const theme = liquidThemes[index];
+    card.style.background = theme.bg;
+    card.style.setProperty('--glow-gradient', theme.edge);
+    card.style.setProperty('--glow-shadow', theme.shadow);
+    card.style.setProperty('--glow-shadow-rgb', theme.rgb);
 
     card.innerHTML = `${cardIcons[key]} <span>${cardNames[key]}</span>`;
 
