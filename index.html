@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026-2027</title>
 
+<!-- Font Awesome for sleek corporate icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <style>
 body {
     margin: 0;
-    padding: 40px 20px;
+    padding: 30px 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #f4f7fc;
     color: #333;
@@ -20,7 +21,7 @@ body {
 h1 {
     text-align: center;
     color: #0b3d91;
-    font-size: 2.2rem;
+    font-size: 2rem;
     margin-bottom: 5px;
     font-weight: 700;
 }
@@ -28,7 +29,7 @@ h1 {
 h2 {
     text-align: center;
     color: #555;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     margin-top: 0;
     font-weight: 400;
 }
@@ -36,72 +37,73 @@ h2 {
 h3 {
     text-align: center;
     color: #777;
-    font-size: 1.1rem;
-    margin-bottom: 40px;
+    font-size: 1rem;
+    margin-bottom: 35px;
 }
 
+/* Decreased width by adding more columns and capping the max card size */
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 15px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
+/* Decreased length (height) and compressed padding */
 .card {
-    min-height: 110px;
-    border-radius: 16px;
+    min-height: 70px;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     text-align: center;
-    padding: 20px;
+    padding: 10px 12px;
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
 }
 
-/* Elegant vector icon style inside card */
+/* Scaled down icons to fit smaller dimensions */
 .card i {
-    font-size: 28px;
-    margin-bottom: 12px;
-    opacity: 0.9;
-    transition: transform 0.3s ease;
+    font-size: 20px;
+    margin-bottom: 6px;
+    opacity: 0.95;
+    transition: transform 0.2s ease;
 }
 
-/* Subtle background accent flare */
+/* Linear overlay for premium depth */
 .card::before {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -50%;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    transform: rotate(45deg);
-    border-radius: 50%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.15));
     pointer-events: none;
 }
 
 .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    filter: brightness(1.1);
 }
 
 .card:hover i {
-    transform: scale(1.15);
+    transform: scale(1.1);
 }
 
 table {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 40px auto 0 auto;
     border-collapse: collapse;
     background: white;
@@ -112,7 +114,7 @@ table {
 
 th, td {
     border: 1px solid #eef2f7;
-    padding: 14px;
+    padding: 12px;
     text-align: center;
 }
 
@@ -147,36 +149,36 @@ const csvLinks = {
     B:"", C:"", D:"", E:"", F:"", G:"", H:"", I:"", J:"", K:"", L:"", M:"", N:"", O:"", P:"", Q:"", R:""
 };
 
-// Modern, corporate gradient palettes matching executive dashboards
+// Thick, deep, and rich solid-gradient color configurations
 const gradients = [
-    "linear-gradient(135deg, #1e3a8a, #3b82f6)", // A - Total Students
-    "linear-gradient(135deg, #6d28d9, #a78bfa)", // B - HR Contacts
-    "linear-gradient(135deg, #b91c1c, #f87171)", // C - Training
-    "linear-gradient(135deg, #047857, #34d399)", // D - Placed Data
-    "linear-gradient(135deg, #c2410c, #fb923c)", // E - Capgemini
-    "linear-gradient(135deg, #0369a1, #38bdf8)", // F - Cognizant
-    "linear-gradient(135deg, #be123c, #fb7185)", // G - Student Journey
-    "linear-gradient(135deg, #4338ca, #818cf8)", // H - IBM
-    "linear-gradient(135deg, #15803d, #4ade80)", // I - Tech Mahindra
-    "linear-gradient(135deg, #9a3412, #f97316)", // J - HCL
-    "linear-gradient(135deg, #7c3aed, #c084fc)", // K - Oracle
-    "linear-gradient(135deg, #0f766e, #2dd4bf)", // L - Amazon
-    "linear-gradient(135deg, #e11d48, #fda4af)", // M - Google
-    "linear-gradient(135deg, #2563eb, #60a5fa)", // N - Microsoft
-    "linear-gradient(135deg, #4f46e5, #a5b4fc)", // O - KPIT
-    "linear-gradient(135deg, #0d9488, #5eead4)", // P - Zoho
-    "linear-gradient(135deg, #b45309, #fbbf24)", // Q - Hexaware
-    "linear-gradient(135deg, #374151, #9ca3af)"  // R - Genpact
+    "linear-gradient(135deg, #0f172a, #1e3a8a)", // A - Deep Navy/Blue
+    "linear-gradient(135deg, #3b0764, #6d28d9)", // B - Deep Royal Purple
+    "linear-gradient(135deg, #450a0a, #991b1b)", // C - Rich Crimson Crimson
+    "linear-gradient(135deg, #022c22, #065f46)", // D - Dark Emerald
+    "linear-gradient(135deg, #7c2d12, #c2410c)", // E - Burnt Corporate Orange
+    "linear-gradient(135deg, #0c4a6e, #0369a1)", // F - Dark Tech Blue
+    "linear-gradient(135deg, #4c0519, #9f1239)", // G - Deep Maroon Wine
+    "linear-gradient(135deg, #1e1b4b, #3730a3)", // H - Indigo Core
+    "linear-gradient(135deg, #14532d, #166534)", // I - Forest Tech Green
+    "linear-gradient(135deg, #854d0e, #a16207)", // J - Deep Amber Gold
+    "linear-gradient(135deg, #2e1065, #5b21b6)", // K - Royal Violet
+    "linear-gradient(135deg, #115e59, #134e4a)", // L - Thick Teal Green
+    "linear-gradient(135deg, #9f1239, #be123c)", // M - Ruby Rose
+    "linear-gradient(135deg, #1e40af, #2563eb)", // N - Classic Cobalt
+    "linear-gradient(135deg, #312e81, #4338ca)", // O - Midnight Iris
+    "linear-gradient(135deg, #0f766e, #0d9488)", // P - Deep Cyan Teal
+    "linear-gradient(135deg, #92400e, #b45309)", // Q - Thick Ochre
+    "linear-gradient(135deg, #1f2937, #374151)"  // R - Industrial Slate Dark
 ];
 
 const cardNames = {
     A:"Total Students Data",
     B:"HR Contact Details",
     C:"Training Programs",
-    D:"Placed Students Data with Offer Letters",
+    D:"Placed Data with Offers",
     E:"Capgemini",
     F:"Cognizant",
-    G:"Student Enrollment & Selection Journey",
+    G:"Enrollment Journey",
     H:"IBM",
     I:"Tech Mahindra",
     J:"HCL",
@@ -190,7 +192,6 @@ const cardNames = {
     R:"Genpact"
 };
 
-// Matching semantic icons for corporate dashboards
 const cardIcons = {
     A: '<i class="fa-solid fa-users"></i>',
     B: '<i class="fa-solid fa-address-book"></i>',
@@ -219,7 +220,6 @@ Object.keys(csvLinks).forEach((key, index) => {
     card.className = "card";
     card.style.background = gradients[index];
 
-    // Injects structured icon followed by the static text asset
     card.innerHTML = `${cardIcons[key]} <span>${cardNames[key]}</span>`;
 
     card.onclick = () => {
