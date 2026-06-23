@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026-2027</title>
 
+<!-- Font Awesome for sleek corporate icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -47,54 +48,73 @@ h3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Minimalist Text-Fit Border Outline Design */
+/* Exactly matching the card style in lll.jpg */
 .card {
-    min-height: 50px;
-    border: 2px solid #000000; /* Solid thin black border line */
-    border-radius: 8px;
+    min-height: 60px;
+    background: #091326; /* Dark translucent-looking background base */
+    border: 1px solid rgba(255, 255, 255, 0.25); /* Subtle light outer outline ring */
+    border-radius: 30px; /* Fully rounded capsule edges */
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Aligns contents neatly to the left inside the grid column */
-    background: transparent; /* No background color */
-    color: #000000; /* Bold black clickable text */
-    font-size: 13px;
-    font-weight: 700;
+    justify-content: flex-start;
+    color: #ffffff; /* Crisp white text asset */
+    font-size: 15px;
+    font-weight: 500;
     cursor: pointer;
-    padding: 10px 16px;
+    padding: 8px 14px;
     box-sizing: border-box;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
-/* Layout rules for the icon inside the 3-column format */
-.card i {
-    font-size: 16px;
-    margin-right: 12px;
-    color: #000000;
+/* Circular Blue Icon Wrapper Badge from lll.jpg */
+.card .icon-badge {
+    width: 40px;
+    height: 40px;
+    background: #0062ff; /* Vibrant blue badge fill */
+    border-radius: 50%; /* Circle shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 14px;
     flex-shrink: 0;
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+/* White vector icons inside the blue badge */
+.card .icon-badge i {
+    font-size: 18px;
+    color: #ffffff;
 }
 
 .card span {
-    letter-spacing: 0.1px;
+    letter-spacing: 0.2px;
     line-height: 1.3;
     text-align: left;
 }
 
-/* Hover feedback */
+/* Premium micro-interactions */
 .card:hover {
-    background-color: rgba(0, 0, 0, 0.05); /* Soft gray background hint on hover */
+    background: #0f1c36; /* Slightly lighter shade on hover */
     transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
 .card:active {
     transform: translateY(0);
 }
 
-/* Responsive fix: Drops to single column on mobile screens so it stays clean */
-@media (max-width: 768px) {
+/* Mobile responsive optimization */
+@media (max-width: 900px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
     .cards-container {
         grid-template-columns: 1fr;
     }
@@ -140,7 +160,8 @@ Object.keys(csvLinks).forEach((key) => {
     const card = document.createElement("div");
     card.className = "card";
 
-    card.innerHTML = `${cardIcons[key]} <span>${cardNames[key]}</span>`;
+    // Injects the structure embedding the icon container badge securely
+    card.innerHTML = `<div class="icon-badge">${cardIcons[key]}</div> <span>${cardNames[key]}</span>`;
 
     card.onclick = () => {
         if(key === "A"){
