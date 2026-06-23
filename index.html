@@ -12,133 +12,130 @@ body {
     margin: 0;
     padding: 40px 20px;
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-    /* Clean solid white background */
     background: #ffffff;
-    color: #1e293b;
+    color: #0f172a;
     min-height: 100vh;
 }
 
 h1 {
     text-align: center;
     color: #0f172a;
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     margin-bottom: 5px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: -0.5px;
 }
 
 h2 {
     text-align: center;
     color: #475569;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-top: 0;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 h3 {
     text-align: center;
     color: #64748b;
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 45px;
 }
 
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
-/* Luxury Liquid Glass Card Base optimized for light canvas */
+/* Thrilling Cyber-Liquid Glass Design */
 .card {
-    min-height: 85px;
-    border-radius: 20px;
+    min-height: 100px;
+    border-radius: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 255, 255, 0.98);
-    font-size: 14px;
-    font-weight: 600;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
     cursor: pointer;
     text-align: center;
-    padding: 15px 20px;
+    padding: 20px;
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     
-    /* Apple Fluid Glass Core Mechanics */
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    /* Extreme backdrop saturation to amplify underlying layers */
+    backdrop-filter: blur(30px) saturate(210%);
+    -webkit-backdrop-filter: blur(30px) saturate(210%);
     
-    /* Dynamic shading adjusted for light background depth */
+    /* Complex multi-layered inner reflections creating that wet, hyper-realistic liquid look */
     box-shadow: 
-        inset 0 15px 25px rgba(255, 255, 255, 0.25), 
-        inset 0 -10px 20px rgba(0, 0, 0, 0.3), 
-        0 8px 24px rgba(0, 0, 0, 0.12);
+        inset 0 4px 6px rgba(255, 255, 255, 0.6),
+        inset 0 25px 30px rgba(255, 255, 255, 0.3), 
+        inset 0 -15px 25px rgba(0, 0, 0, 0.2), 
+        0 12px 24px var(--vibrant-shadow);
     
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* 3D Liquid Curvature Gloss Overlay */
+/* Hyper-Gloss Highlight curve across the top half */
 .card::before {
     content: '';
     position: absolute;
-    top: 2px;
-    left: 4px;
-    right: 4px;
-    height: 38%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.05) 100%);
-    border-radius: 16px 16px 45% 45%;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 22px 22px 60% 60%;
     pointer-events: none;
 }
 
-/* Fluid Organic Glow Edge Outer Layer */
+/* Micro-thin glowing outer edge bevel */
 .card::after {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 20px;
-    padding: 1.5px; /* Bevel edge thickness */
-    background: var(--glow-gradient);
+    border-radius: 24px;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0.1) 50%, rgba(0,0,0,0.2));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
-    opacity: 0.8;
-    transition: opacity 0.4s ease;
 }
 
-/* Cinematic Icons */
+/* Vivid, glowing vector icons */
 .card i {
-    font-size: 22px;
-    margin-bottom: 8px;
-    color: #fff;
-    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)) drop-shadow(0 0 10px rgba(255,255,255,0.6));
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .card span {
-    letter-spacing: 0.3px;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    letter-spacing: 0.4px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
 }
 
-/* Hover Dynamics - Light refraction shift */
+/* Thrilling Pop Hover States */
 .card:hover {
-    transform: translateY(-6px) scale(1.02);
+    transform: translateY(-10px) scale(1.04);
     box-shadow: 
-        inset 0 20px 30px rgba(255, 255, 255, 0.35), 
-        inset 0 -5px 15px rgba(0, 0, 0, 0.25), 
-        0 16px 32px rgba(var(--glow-shadow-rgb), 0.25);
+        inset 0 4px 8px rgba(255, 255, 255, 0.8),
+        inset 0 30px 35px rgba(255, 255, 255, 0.4), 
+        inset 0 -10px 20px rgba(0, 0, 0, 0.15), 
+        0 20px 35px var(--vibrant-shadow-hover);
+    filter: brightness(1.05);
 }
 
 .card:hover i {
-    transform: scale(1.12) translateY(-1px);
-}
-
-.card:hover::after {
-    opacity: 1;
+    transform: scale(1.2) rotate(-3deg);
 }
 </style>
 </head>
@@ -157,26 +154,28 @@ const csvLinks = {
     B:"", C:"", D:"", E:"", F:"", G:"", H:"", I:"", J:"", K:"", L:"", M:"", N:"", O:"", P:"", Q:"", R:""
 };
 
-// Vibrant liquid dyes optimized to stand out beautifully on plain solid white
-const liquidThemes = [
-    { bg: "rgba(30, 64, 175, 0.85)", edge: "linear-gradient(135deg, #3b82f6, #1d4ed8)", shadow: "#3b82f6", rgb: "59, 130, 246" }, // A
-    { bg: "rgba(109, 40, 217, 0.85)", edge: "linear-gradient(135deg, #a78bfa, #6d28d9)", shadow: "#a78bfa", rgb: "167, 139, 250" }, // B
-    { bg: "rgba(185, 28, 28, 0.85)", edge: "linear-gradient(135deg, #ef4444, #b91c1c)", shadow: "#ef4444", rgb: "239, 68, 68" }, // C
-    { bg: "rgba(4, 120, 87, 0.85)", edge: "linear-gradient(135deg, #34d399, #047857)", shadow: "#34d399", rgb: "52, 211, 153" }, // D
-    { bg: "rgba(194, 65, 12, 0.85)", edge: "linear-gradient(135deg, #fb923c, #c2410c)", shadow: "#fb923c", rgb: "251, 146, 60" }, // E
-    { bg: "rgba(3, 105, 161, 0.85)", edge: "linear-gradient(135deg, #38bdf8, #0369a1)", shadow: "#38bdf8", rgb: "56, 189, 248" }, // F
-    { bg: "rgba(190, 18, 60, 0.85)", edge: "linear-gradient(135deg, #fb7185, #be123c)", shadow: "#fb7185", rgb: "251, 113, 133" }, // G
-    { bg: "rgba(67, 56, 202, 0.85)", edge: "linear-gradient(135deg, #818cf8, #4338ca)", shadow: "#818cf8", rgb: "129, 140, 248" }, // H
-    { bg: "rgba(21, 128, 61, 0.85)", edge: "linear-gradient(135deg, #4ade80, #15803d)", shadow: "#4ade80", rgb: "74, 222, 128" }, // I
-    { bg: "rgba(180, 83, 9, 0.85)", edge: "linear-gradient(135deg, #fbbf24, #b45309)", shadow: "#fbbf24", rgb: "251, 191, 36" }, // J
-    { bg: "rgba(124, 58, 237, 0.85)", edge: "linear-gradient(135deg, #c084fc, #7c3aed)", shadow: "#c084fc", rgb: "192, 132, 252" }, // K
-    { bg: "rgba(15, 118, 110, 0.85)", edge: "linear-gradient(135deg, #2dd4bf, #0f766e)", shadow: "#2dd4bf", rgb: "45, 212, 191" }, // L
-    { bg: "rgba(225, 29, 72, 0.85)", edge: "linear-gradient(135deg, #fda4af, #e11d48)", shadow: "#fda4af", rgb: "253, 164, 175" }, // M
-    { bg: "rgba(37, 99, 235, 0.85)", edge: "linear-gradient(135deg, #60a5fa, #2563eb)", shadow: "#60a5fa", rgb: "96, 165, 250" }, // N
-    { bg: "rgba(79, 70, 229, 0.85)", edge: "linear-gradient(135deg, #a5b4fc, #4f46e5)", shadow: "#a5b4fc", rgb: "165, 180, 252" }, // O
-    { bg: "rgba(13, 148, 136, 0.85)", edge: "linear-gradient(135deg, #5eead4, #0d9488)", shadow: "#5eead4", rgb: "94, 234, 212" }, // P
-    { bg: "rgba(146, 64, 14, 0.85)", edge: "linear-gradient(135deg, #fcd34d, #92400e)", shadow: "#fcd34d", rgb: "252, 211, 77" }, // Q
-    { bg: "rgba(55, 65, 81, 0.85)", edge: "linear-gradient(135deg, #9ca3af, #374151)", shadow: "#9ca3af", rgb: "156, 163, 175" }  // R
+/* Eye-thrilling, ultra-saturated liquid gradient palettes.
+  Each card gets high-intensity color values + an matching colorful ambient drop shadow.
+*/
+const vibrantThemes = [
+    { bg: "linear-gradient(135deg, #0052d4, #4364f7, #6fb1fc)", shadow: "rgba(67, 100, 247, 0.4)", hover: "rgba(67, 100, 247, 0.6)" },      // A - Electric Blue
+    { bg: "linear-gradient(135deg, #7f00ff, #e100ff)",         shadow: "rgba(225, 0, 255, 0.35)", hover: "rgba(225, 0, 255, 0.55)" },     // B - Cyber Purple
+    { bg: "linear-gradient(135deg, #ff007f, #ff4500)",         shadow: "rgba(255, 0, 127, 0.4)", hover: "rgba(255, 0, 127, 0.6)" },      // C - Hot Neon Pink/Red
+    { bg: "linear-gradient(135deg, #00b4db, #0083b0)",         shadow: "rgba(0, 180, 219, 0.4)", hover: "rgba(0, 180, 219, 0.6)" },      // D - Vivid Cyan
+    { bg: "linear-gradient(135deg, #f857a6, #ff5858)",         shadow: "rgba(248, 87, 166, 0.4)", hover: "rgba(248, 87, 166, 0.6)" },     // E - Capgemini Neon Pink
+    { bg: "linear-gradient(135deg, #00c6ff, #0072ff)",         shadow: "rgba(0, 114, 255, 0.4)", hover: "rgba(0, 114, 255, 0.6)" },      // F - Cognizant Electric Blue
+    { bg: "linear-gradient(135deg, #11998e, #38ef7d)",         shadow: "rgba(56, 239, 125, 0.35)", hover: "rgba(56, 239, 125, 0.55)" },   // G - Toxic Alien Green
+    { bg: "linear-gradient(135deg, #4e54c8, #8f94fb)",         shadow: "rgba(78, 84, 200, 0.4)", hover: "rgba(78, 84, 200, 0.6)" },      // H - IBM Deep Neon Indigo
+    { bg: "linear-gradient(135deg, #ff9900, #ff5500)",         shadow: "rgba(255, 85, 0, 0.4)", hover: "rgba(255, 85, 0, 0.6)" },        // I - Tech Mahindra Fire Orange
+    { bg: "linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b)", shadow: "rgba(215, 109, 119, 0.4)", hover: "rgba(215, 109, 119, 0.6)" },   // J - Cosmic Sunset
+    { bg: "linear-gradient(135deg, #ef32d9, #89fffd)",         shadow: "rgba(239, 50, 217, 0.35)", hover: "rgba(239, 50, 217, 0.55)" },   // K - Synthwave Magenta
+    { bg: "linear-gradient(135deg, #1d976c, #93f9b9)",         shadow: "rgba(29, 151, 108, 0.35)", hover: "rgba(29, 151, 108, 0.55)" },   // L - Amazon Emerald
+    { bg: "linear-gradient(135deg, #ff416c, #ff4b2b)",         shadow: "rgba(255, 65, 108, 0.4)", hover: "rgba(255, 65, 108, 0.6)" },     // M - Google Intense Red
+    { bg: "linear-gradient(135deg, #2193b0, #6dd5ed)",         shadow: "rgba(33, 147, 176, 0.4)", hover: "rgba(33, 147, 176, 0.6)" },     // N - Microsoft Sky Blue
+    { bg: "linear-gradient(135deg, #654ea3, #eaafc8)",         shadow: "rgba(101, 78, 163, 0.4)", hover: "rgba(101, 78, 163, 0.6)" },     // O - Premium Orchid
+    { bg: "linear-gradient(135deg, #ffe259, #ffa751)",         shadow: "rgba(255, 167, 81, 0.4)", hover: "rgba(255, 167, 81, 0.6)" },     // P - Electric Gold
+    { bg: "linear-gradient(135deg, #4ac1ff, #7957ff)",         shadow: "rgba(121, 87, 255, 0.4)", hover: "rgba(121, 87, 255, 0.6)" },     // Q - Hexaware Neon Violet
+    { bg: "linear-gradient(135deg, #000000, #434343)",         shadow: "rgba(0, 0, 0, 0.2)", hover: "rgba(0, 0, 0, 0.35)" }               // R - Luxury Liquid Obsidian
 ];
 
 const cardNames = {
@@ -203,11 +202,10 @@ Object.keys(csvLinks).forEach((key, index) => {
     const card = document.createElement("div");
     card.className = "card";
     
-    const theme = liquidThemes[index];
+    const theme = vibrantThemes[index];
     card.style.background = theme.bg;
-    card.style.setProperty('--glow-gradient', theme.edge);
-    card.style.setProperty('--glow-shadow', theme.shadow);
-    card.style.setProperty('--glow-shadow-rgb', theme.rgb);
+    card.style.setProperty('--vibrant-shadow', theme.shadow);
+    card.style.setProperty('--vibrant-shadow-hover', theme.hover);
 
     card.innerHTML = `${cardIcons[key]} <span>${cardNames[key]}</span>`;
 
