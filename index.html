@@ -11,17 +11,18 @@
 <style>
 body {
     margin: 0;
-    padding: 30px 20px;
+    padding: 40px 20px;
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #ffffff;
-    color: #000000;
+    /* Exactly matching the premium dark background gradient from Data 2.png */
+    background: radial-gradient(circle at 50% 30%, #0b1a36 0%, #020714 100%);
+    color: #ffffff;
     min-height: 100vh;
 }
 
 h1 {
     text-align: center;
-    color: #000000;
-    font-size: 2rem;
+    color: #ffffff;
+    font-size: 2.2rem;
     margin-bottom: 5px;
     font-weight: 800;
     letter-spacing: -0.5px;
@@ -29,95 +30,84 @@ h1 {
 
 h2 {
     text-align: center;
-    color: #333333;
-    font-size: 1.2rem;
+    color: #3b82f6; /* Vibrant theme accent blue */
+    font-size: 1.3rem;
     margin-top: 0;
     font-weight: 600;
 }
 
 h3 {
     text-align: center;
-    color: #555555;
-    font-size: 0.95rem;
-    margin-bottom: 35px;
+    color: #64748b;
+    font-size: 1rem;
+    margin-bottom: 45px;
     font-weight: 500;
 }
 
-/* Arranged into exactly 3 equal columns */
+/* Flexible container allowing cards to wrap while maintaining text-fit dynamic widths */
 .cards-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 15px;
+    justify-content: center;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Exactly matching the card style in lll.jpg */
+/* Precise replication of the services card styling from Data 2.png */
 .card {
-    min-height: 60px;
-    background: #091326; /* Dark translucent-looking background base */
-    border: 1px solid rgba(255, 255, 255, 0.25); /* Subtle light outer outline ring */
-    border-radius: 30px; /* Fully rounded capsule edges */
-    display: flex;
+    height: 54px;
+    width: fit-content; /* Dynamically shrinks the card width tightly to text-fit length */
+    background: rgba(9, 22, 46, 0.7); /* Translucent dark tint matching the image */
+    border: 1px solid rgba(59, 130, 246, 0.35); /* Subtle glowing blue-tint outline line */
+    border-radius: 27px; /* Perfect pill-shaped capsule edges */
+    display: inline-flex;
     align-items: center;
     justify-content: flex-start;
-    color: #ffffff; /* Crisp white text asset */
-    font-size: 15px;
+    color: #ffffff; /* Crisp clean white text */
+    font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    padding: 8px 14px;
+    padding: 0 20px 0 8px; /* Tighter internal horizontal containment padding */
     box-sizing: border-box;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    white-space: nowrap; /* Prevents text from breaking or wrapping awkwardly */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
 }
 
-/* Circular Blue Icon Wrapper Badge from lll.jpg */
+/* Circular Blue Icon Wrapper Badge from Data 2.png */
 .card .icon-badge {
-    width: 40px;
-    height: 40px;
-    background: #0062ff; /* Vibrant blue badge fill */
-    border-radius: 50%; /* Circle shape */
+    width: 38px;
+    height: 38px;
+    background: #0062ff; /* High-intensity blue icon fill */
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 14px;
+    margin-right: 12px;
     flex-shrink: 0;
-    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.2);
 }
 
 /* White vector icons inside the blue badge */
 .card .icon-badge i {
-    font-size: 18px;
+    font-size: 16px;
     color: #ffffff;
 }
 
 .card span {
     letter-spacing: 0.2px;
-    line-height: 1.3;
-    text-align: left;
 }
 
-/* Premium micro-interactions */
+/* Interactive hover response */
 .card:hover {
-    background: #0f1c36; /* Slightly lighter shade on hover */
+    background: rgba(13, 31, 66, 0.9);
+    border-color: #3b82f6; /* Accent highlight on hover */
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 6px 20px rgba(0, 98, 255, 0.2);
 }
 
 .card:active {
     transform: translateY(0);
-}
-
-/* Mobile responsive optimization */
-@media (max-width: 900px) {
-    .cards-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media (max-width: 600px) {
-    .cards-container {
-        grid-template-columns: 1fr;
-    }
 }
 </style>
 </head>
@@ -160,7 +150,6 @@ Object.keys(csvLinks).forEach((key) => {
     const card = document.createElement("div");
     card.className = "card";
 
-    // Injects the structure embedding the icon container badge securely
     card.innerHTML = `<div class="icon-badge">${cardIcons[key]}</div> <span>${cardNames[key]}</span>`;
 
     card.onclick = () => {
