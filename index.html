@@ -6,7 +6,6 @@
 <title>2026-2027</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <style>
 body {
@@ -142,43 +141,6 @@ h3 {
 .card:hover::after {
     opacity: 1;
 }
-
-/* Premium Glass Datatable styling */
-table {
-    width: 100%;
-    max-width: 1200px;
-    margin: 50px auto 0 auto;
-    border-collapse: collapse;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(15px);
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-th, td {
-    padding: 14px;
-    text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-th {
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
-    font-weight: 600;
-}
-
-td {
-    color: #cbd5e1;
-}
-
-.loading {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 20px;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(255,255,255,0.5);
-}
 </style>
 </head>
 
@@ -189,8 +151,6 @@ td {
 <h3>Academic Year 2026-2027</h3>
 
 <div class="cards-container" id="cardsContainer"></div>
-<div class="loading" id="loading"></div>
-<table id="dataTable"></table>
 
 <script>
 const csvLinks = {
@@ -278,37 +238,6 @@ Object.keys(csvLinks).forEach((key, index) => {
 
     container.appendChild(card);
 });
-
-function loadCSV(url){
-    if(url===""){
-        alert("CSV Link Not Added");
-        return;
-    }
-    document.getElementById("loading").innerHTML="Loading Data...";
-    Papa.parse(url,{
-        download:true,
-        complete:function(results){
-            let data=results.data;
-            let tableHTML="";
-            data.forEach((row,rowIndex)=>{
-                tableHTML+="<tr>";
-                row.forEach(cell=>{
-                    if(rowIndex===0){
-                        tableHTML+=`<th>${cell}</th>`;
-                    }else{
-                        tableHTML+=`<td>${cell}</td>`;
-                    }
-                });
-                tableHTML+="</tr>";
-            });
-            document.getElementById("dataTable").innerHTML=tableHTML;
-            document.getElementById("loading").innerHTML="";
-        },
-        error:function(){
-            document.getElementById("loading").innerHTML="Unable to Load CSV Data";
-        }
-    });
-}
 </script>
 
 </body>
