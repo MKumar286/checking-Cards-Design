@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026-2027</title>
 
-<!-- Font Awesome for sleek corporate icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -13,7 +12,7 @@ body {
     margin: 0;
     padding: 40px 20px;
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-    /* Exactly matching the premium dark background gradient from Data 2.png */
+    /* Deep blue cinematic background gradient from Data 2.png */
     background: radial-gradient(circle at 50% 30%, #0b1a36 0%, #020714 100%);
     color: #ffffff;
     min-height: 100vh;
@@ -44,20 +43,23 @@ h3 {
     font-weight: 500;
 }
 
-/* Flexible container allowing cards to wrap while maintaining text-fit dynamic widths */
+/* FIXED CENTERED GRID LAYOUT:
+   Forces exactly 3 columns configured purely by 'max-content' (text fit).
+   Centers the entire structural block in the middle of the webpage.
+*/
 .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, max-content); 
+    gap: 20px 35px; /* Vertical and horizontal gap between the slim items */
     max-width: 1200px;
     margin: 0 auto;
+    justify-content: center; /* Centers the 3 columns horizontally on the page */
 }
 
 /* Precise replication of the services card styling from Data 2.png */
 .card {
     height: 54px;
-    width: fit-content; /* Dynamically shrinks the card width tightly to text-fit length */
+    width: max-content; /* Locks width tightly up to the text dimension */
     background: rgba(9, 22, 46, 0.7); /* Translucent dark tint matching the image */
     border: 1px solid rgba(59, 130, 246, 0.35); /* Subtle glowing blue-tint outline line */
     border-radius: 27px; /* Perfect pill-shaped capsule edges */
@@ -68,7 +70,7 @@ h3 {
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    padding: 0 20px 0 8px; /* Tighter internal horizontal containment padding */
+    padding: 0 20px 0 8px; /* Internal horizontal containment padding */
     box-sizing: border-box;
     white-space: nowrap; /* Prevents text from breaking or wrapping awkwardly */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -109,6 +111,13 @@ h3 {
 .card:active {
     transform: translateY(0);
 }
+
+/* Responsive fallback layout for standard tablets or phones */
+@media (max-width: 850px) {
+    .cards-container {
+        grid-template-columns: max-content; /* Drops layout columns comfortably to 1 centralized stack */
+    }
+}
 </style>
 </head>
 
@@ -123,7 +132,7 @@ h3 {
 <script>
 const csvLinks = {
     A:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT4Yx068ZzCU8j4ouN_73-tolfsyoAO0skZWsGSc_4oZbACSlNGtpBCfaGQkpZfWg/pub?gid=1507961296&single=true&output=csv",
-    B:"", C:"", D:"", E:"", F:"", G:"", H:"", I:"", J:"", K:"", L:"", M:"", N:"", O:"", P:"", Q:"", R:""
+    B:"", C:"", D:"", E:"", F:"", G:"", H:"", I:"", J:", K:", L:", M:", N:", O:", P:", Q:", R:""
 };
 
 const cardNames = {
