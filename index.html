@@ -13,86 +13,84 @@ body {
     padding: 30px 20px;
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     background: #ffffff;
-    color: #1e293b;
+    color: #000000;
     min-height: 100vh;
 }
 
 h1 {
     text-align: center;
-    color: #0f172a;
+    color: #000000;
     font-size: 2rem;
     margin-bottom: 5px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: -0.5px;
 }
 
 h2 {
     text-align: center;
-    color: #475569;
+    color: #333333;
     font-size: 1.2rem;
     margin-top: 0;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 h3 {
     text-align: center;
-    color: #64748b;
+    color: #555555;
     font-size: 0.95rem;
     margin-bottom: 35px;
+    font-weight: 500;
 }
 
-/* Shrunk the card widths by forcing more columns in the same space */
+/* Flex layout that wraps to allow perfect text-fit scaling */
 .cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 12px;
-    max-width: 1100px;
+    justify-content: center;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Compact Corporate Card Styling */
+/* Minimalist Text-Fit Border Outline Design */
 .card {
-    height: 64px; /* Strictly decreased height */
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
+    height: 48px; /* Compact height */
+    width: max-content; /* Shrinks the card border tightly to the text content */
+    border: 2px solid #000000; /* Solid thin black border line */
+    border-radius: 8px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: 600;
+    background: transparent; /* No background color */
+    color: #000000; /* Bold black clickable text asset */
+    font-size: 13px;
+    font-weight: 700;
     cursor: pointer;
-    text-align: center;
-    padding: 6px 12px;
-    position: relative;
+    white-space: nowrap;
+    padding: 0 16px;
     box-sizing: border-box;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    
-    /* Clean solid gradient depth */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-/* Micro compact spacing for icons */
+/* Inline typography asset alignment rules */
 .card i {
-    font-size: 16px;
-    margin-bottom: 4px;
-    opacity: 0.95;
+    font-size: 15px;
+    margin-right: 8px; /* Lateral spacing for text-fit layout */
+    color: #000000;
 }
 
 .card span {
-    letter-spacing: 0.2px;
-    line-height: 1.2;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    letter-spacing: 0.1px;
 }
 
-/* Micro-interactions */
+/* Clean minimal interaction feedback */
 .card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    filter: saturate(1.1) brightness(1.02);
+    background-color: rgba(0, 0, 0, 0.05); /* Soft gray text backdrop hint on hover */
+    transform: translateY(-2px);
+}
+
+.card:active {
+    transform: translateY(0);
 }
 </style>
 </head>
@@ -110,28 +108,6 @@ const csvLinks = {
     A:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT4Yx068ZzCU8j4ouN_73-tolfsyoAO0skZWsGSc_4oZbACSlNGtpBCfaGQkpZfWg/pub?gid=1507961296&single=true&output=csv",
     B:"", C:"", D:"", E:"", F:"", G:"", H:"", I:"", J:"", K:"", L:"", M:"", N:"", O:"", P:"", Q:"", R:""
 };
-
-// Clean, solid corporate gradient colors
-const solidGradients = [
-    "linear-gradient(135deg, #1e3a8a, #3b82f6)", // A - Navy to Royal
-    "linear-gradient(135deg, #4c1d95, #7c3aed)", // B - Deep Violet
-    "linear-gradient(135deg, #7f1d1d, #dc2626)", // C - Classic Maroon Red
-    "linear-gradient(135deg, #064e3b, #10b981)", // D - Deep Mint
-    "linear-gradient(135deg, #7c2d12, #ea580c)", // E - Deep Orange
-    "linear-gradient(135deg, #075985, #0ea5e9)", // F - Tech Azure
-    "linear-gradient(135deg, #831843, #db2777)", // G - Deep Pink Accent
-    "linear-gradient(135deg, #1e1b4b, #4338ca)", // H - Midnight Indigo
-    "linear-gradient(135deg, #14532d, #16a34a)", // I - Emerald Green
-    "linear-gradient(135deg, #78350f, #d97706)", // J - Warm Amber
-    "linear-gradient(135deg, #581c87, #9333ea)", // K - Imperial Purple
-    "linear-gradient(135deg, #134e4a, #0d9488)", // L - Clean Teal
-    "linear-gradient(135deg, #9f1239, #f43f5e)", // M - Crimson Rose
-    "linear-gradient(135deg, #2563eb, #60a5fa)", // N - Corporate Cobalt
-    "linear-gradient(135deg, #3730a3, #6366f1)", // O - Periwinkle Iris
-    "linear-gradient(135deg, #0f766e, #14b8a6)", // P - Aqua Cyan
-    "linear-gradient(135deg, #92400e, #f59e0b)", // Q - Ochre Yellow
-    "linear-gradient(135deg, #1f2937, #4b5563)"  // R - Balanced Charcoal Slate
-];
 
 const cardNames = {
     A:"Total Students Data", B:"HR Contact Details", C:"Training Programs",
@@ -153,10 +129,9 @@ const cardIcons = {
 
 const container = document.getElementById("cardsContainer");
 
-Object.keys(csvLinks).forEach((key, index) => {
+Object.keys(csvLinks).forEach((key) => {
     const card = document.createElement("div");
     card.className = "card";
-    card.style.background = solidGradients[index];
 
     card.innerHTML = `${cardIcons[key]} <span>${cardNames[key]}</span>`;
 
