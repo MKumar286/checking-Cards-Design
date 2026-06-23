@@ -195,7 +195,7 @@ td {
 <script>
 const csvLinks = {
     A:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT4Yx068ZzCU8j4ouN_73-tolfsyoAO0skZWsGSc_4oZbACSlNGtpBCfaGQkpZfWg/pub?gid=1507961296&single=true&output=csv",
-    B:"", C:"", D:"", E:"", F:"", G:"", H:"", I:"", J:", K:"", L:"", M:"", N:"", O:"", P:"", Q:"", R:""
+    B:"", C:"", D:"", E:"", F:"", G:"", H:"", I:"", J:"", K:"", L:"", M:"", N:"", O:"", P:"", Q:"", R:""
 };
 
 // Luxury Liquid Colors Setup (Background glass dye, Edge neon gradients, & Shadow effects)
@@ -244,7 +244,6 @@ Object.keys(csvLinks).forEach((key, index) => {
     const card = document.createElement("div");
     card.className = "card";
     
-    // Inject custom properties into each asset context window dynamically
     const theme = liquidThemes[index];
     card.style.background = theme.bg;
     card.style.setProperty('--glow-gradient', theme.edge);
