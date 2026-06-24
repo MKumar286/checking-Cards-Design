@@ -10,111 +10,130 @@
 <style>
 body {
     margin: 0;
-    padding: 40px 20px;
+    padding: 20px;
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     /* Deep blue cinematic background gradient from Data 2.png */
     background: radial-gradient(circle at 50% 30%, #0b1a36 0%, #020714 100%);
     color: #ffffff;
     min-height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
-h1 {
+/* FLOATING HEADER PANEL:
+   Combines bold solid blue and pink/red tones into a compact floating container background.
+   Drastically minimizes inner gap sizes to perfectly fit single screen presentations.
+*/
+.header-container {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.85), rgba(219, 39, 119, 0.85));
+    max-width: 900px;
+    margin: 0 auto 25px auto;
+    padding: 12px 20px;
+    border-radius: 20px;
     text-align: center;
+    box-shadow: 0 8px 32px rgba(219, 39, 119, 0.2), 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header-container h1 {
+    margin: 0 0 2px 0;
     color: #ffffff;
-    font-size: 2.2rem;
-    margin-bottom: 5px;
+    font-size: 1.8rem;
     font-weight: 800;
     letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-h2 {
-    text-align: center;
-    color: #3b82f6; /* Vibrant theme accent blue */
-    font-size: 1.3rem;
-    margin-top: 0;
+.header-container h2 {
+    margin: 0 0 2px 0;
+    color: #e2e8f0; 
+    font-size: 1.1rem;
     font-weight: 600;
 }
 
-h3 {
-    text-align: center;
-    color: #64748b;
-    font-size: 1rem;
-    margin-bottom: 45px;
+.header-container h3 {
+    margin: 0;
+    color: #cbd5e1;
+    font-size: 0.9rem;
     font-weight: 500;
+    opacity: 0.9;
 }
 
-/* BULLETPROOF 3x6 LAYOUT SYSTEM:
-   Forces exactly 3 columns and 6 rows based on card contents.
-   Aligns the whole container structure perfectly in the center of the window.
-*/
+/* BULLETPROOF 3x6 LAYOUT SYSTEM */
 .cards-container {
     display: grid;
     grid-template-columns: repeat(3, max-content); 
     grid-template-rows: repeat(6, max-content);
     grid-auto-flow: column; /* Fills columns downward up to 6 items, then wraps to the next column */
-    gap: 20px 35px; /* Vertical and horizontal gap spacing */
+    gap: 12px 30px; /* Highly optimized vertical and horizontal gap spacing for single screen viewing */
     max-width: 1200px;
     margin: 0 auto;
     justify-content: center; /* Centers the columns horizontally on the page */
 }
 
-/* Precise replication of the services card styling from Data 2.png */
+/* FLOATING BLUE-WHITE MIXED GRADIENT CARDS:
+   Replaced dark background with an exquisite semi-translucent ice blue and clean white fluid sheen.
+*/
 .card {
-    height: 54px;
+    height: 48px; /* Tighter compact profile height */
     width: max-content; /* Locks width tightly up to the text dimension */
-    background: rgba(9, 22, 46, 0.7); /* Translucent dark tint matching the image */
-    border: 1px solid rgba(59, 130, 246, 0.35); /* Subtle glowing blue-tint outline line */
-    border-radius: 27px; /* Perfect pill-shaped capsule edges */
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.4) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(59, 130, 246, 0.1) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.4); /* High-contrast white-tint border line */
+    border-radius: 24px; /* Pill capsule edges */
     display: inline-flex;
     align-items: center;
     justify-content: flex-start;
-    color: #ffffff; /* Crisp clean white text */
-    font-size: 14px;
-    font-weight: 500;
+    color: #ffffff; 
+    font-size: 13.5px;
+    font-weight: 600;
     cursor: pointer;
-    padding: 0 20px 0 8px; /* Internal horizontal containment padding */
+    padding: 0 18px 0 6px; 
     box-sizing: border-box;
-    white-space: nowrap; /* Prevents text from breaking or wrapping awkwardly */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s ease;
+    white-space: nowrap; 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(255,255,255,0.2);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Circular Blue Icon Wrapper Badge from Data 2.png */
+/* Circular High-Intensity Blue Icon Wrapper Badge from Data 2.png */
 .card .icon-badge {
-    width: 38px;
-    height: 38px;
-    background: #0062ff; /* High-intensity blue icon fill */
+    width: 36px;
+    height: 36px;
+    background: #0062ff; 
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 12px;
+    margin-right: 10px;
     flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 98, 255, 0.4);
 }
 
 /* White vector icons inside the blue badge */
 .card .icon-badge i {
-    font-size: 16px;
+    font-size: 15px;
     color: #ffffff;
 }
 
 .card span {
-    letter-spacing: 0.2px;
+    letter-spacing: 0.1px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
-/* Interactive hover response */
+/* Interactive floating lift response */
 .card:hover {
-    background: rgba(13, 31, 66, 0.9);
-    border-color: #3b82f6; /* Accent highlight on hover */
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.55) 0%, rgba(255, 255, 255, 0.25) 50%, rgba(59, 130, 246, 0.2) 100%);
+    border-color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 98, 255, 0.2);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
 }
 
 .card:active {
     transform: translateY(0);
 }
 
-/* Fluid responsive layout logic for standard devices */
+/* Responsive fallback logic for smaller screens */
 @media (max-width: 950px) {
     .cards-container {
         grid-template-columns: repeat(2, max-content);
@@ -132,9 +151,11 @@ h3 {
 
 <body>
 
-<h1>Mahatma Gandhi Institute of Technology</h1>
-<h2>Training and Placement Cell</h2>
-<h3>Academic Year 2026-2027</h3>
+<div class="header-container">
+    <h1>Mahatma Gandhi Institute of Technology</h1>
+    <h2>Training and Placement Cell</h2>
+    <h3>Academic Year 2026-2027</h3>
+</div>
 
 <div class="cards-container" id="cardsContainer"></div>
 
@@ -165,26 +186,25 @@ const cardNames = {
     R:"Note Submitted to the Principal & Secretary"
 };
 
-// Explicitly updated icons tailored directly to your custom data endpoints
 const cardIcons = {
-    A: '<i class="fa-solid fa-users"></i>',               // Total Students
-    B: '<i class="fa-solid fa-route"></i>',               // Selection Journey
-    C: '<i class="fa-solid fa-file-signature"></i>',       // Placed with Offers
-    D: '<i class="fa-solid fa-envelope-open-text"></i>',  // JDs & Mails
-    E: '<i class="fa-solid fa-address-book"></i>',        // HR Contacts
-    F: '<i class="fa-solid fa-chart-pie"></i>',           // Reports
-    G: '<i class="fa-solid fa-chalkboard-user"></i>',     // Training with Profs
-    H: '<i class="fa-solid fa-bullhorn"></i>',            // Circulars
-    I: '<i class="fa-solid fa-camera"></i>',              // Campus Drives & Photos
-    J: '<i class="fa-solid fa-money-bill-wave"></i>',     // Salary Details
-    K: '<i class="fa-solid fa-file-contract"></i>',       // MoUs
-    L: '<i class="fa-solid fa-business-time"></i>',       // Internships
-    M: '<i class="fa-solid fa-comments"></i>',            // Feedbacks & Surveys
-    N: '<i class="fa-solid fa-building-shield"></i>',     // NBA Visit
-    O: '<i class="fa-solid fa-award"></i>',               // NAAC Visit
-    P: '<i class="fa-solid fa-boxes-stacked"></i>',       // Stock & Infra
-    Q: '<i class="fa-solid fa-file-invoice-dollar"></i>', // Budget Proposals
-    R: '<i class="fa-solid fa-file-pen"></i>'             // Notes to Secretary
+    A: '<i class="fa-solid fa-users"></i>',               
+    B: '<i class="fa-solid fa-route"></i>',               
+    C: '<i class="fa-solid fa-file-signature"></i>',       
+    D: '<i class="fa-solid fa-envelope-open-text"></i>',  
+    E: '<i class="fa-solid fa-address-book"></i>',        
+    F: '<i class="fa-solid fa-chart-pie"></i>',           
+    G: '<i class="fa-solid fa-chalkboard-user"></i>',     
+    H: '<i class="fa-solid fa-bullhorn"></i>',            
+    I: '<i class="fa-solid fa-camera"></i>',              
+    J: '<i class="fa-solid fa-money-bill-wave"></i>',     
+    K: '<i class="fa-solid fa-file-contract"></i>',       
+    L: '<i class="fa-solid fa-business-time"></i>',       
+    M: '<i class="fa-solid fa-comments"></i>',            
+    N: '<i class="fa-solid fa-building-shield"></i>',     
+    O: '<i class="fa-solid fa-award"></i>',               
+    P: '<i class="fa-solid fa-boxes-stacked"></i>',       
+    Q: '<i class="fa-solid fa-file-invoice-dollar"></i>', 
+    R: '<i class="fa-solid fa-file-pen"></i>'             
 };
 
 const container = document.getElementById("cardsContainer");
