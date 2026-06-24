@@ -69,12 +69,12 @@ body {
     justify-content: center; 
 }
 
-/* FLOATING CARDS WITH WHITE & PINK GRADIENT TEXT */
+/* FLOATING CARDS WITH NO BACKGROUND COLOR */
 .card {
     height: 48px; 
     width: max-content; 
-    background: linear-gradient(135deg, rgba(13, 37, 88, 0.9) 0%, rgba(26, 54, 110, 0.95) 100%);
-    border: 1px solid rgba(13, 37, 88, 0.2); 
+    background: transparent; /* Removed background color entirely */
+    border: 1px solid rgba(13, 37, 88, 0.3); /* Subtle border to define shape on white bg */
     border-radius: 24px; 
     display: inline-flex;
     align-items: center;
@@ -83,7 +83,6 @@ body {
     padding: 0 18px 0 6px; 
     box-sizing: border-box;
     white-space: nowrap; 
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -92,7 +91,7 @@ body {
     font-size: 13.5px;
     font-weight: 700;
     letter-spacing: 0.1px;
-    background: linear-gradient(to right, #ffffff 40%, #f472b6 100%);
+    background: linear-gradient(to right, #0d2558 30%, #db2777 100%); /* Adjusted starting tone to dark blue for legibility on white background */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -109,7 +108,7 @@ body {
     justify-content: center;
     margin-right: 10px;
     flex-shrink: 0;
-    box-shadow: 0 2px 6px rgba(0, 98, 255, 0.3);
+    box-shadow: 0 2px 6px rgba(0, 98, 255, 0.2);
     transition: all 0.2s ease;
 }
 
@@ -126,16 +125,16 @@ body {
     border-color: transparent;
 }
 
-/* Slightly tweak the icon badge and text contrast on hover */
+/* Tweak the icon badge and text contrast on hover over the mixed gradient */
 .card:hover .icon-badge {
     background: #ffffff;
     box-shadow: 0 2px 8px rgba(255, 255, 255, 0.4);
 }
 .card:hover .icon-badge i {
-    color: #7c3aed; /* Blue badge changes matching the container theme */
+    color: #7c3aed; 
 }
 .card:hover span {
-    background: #ffffff; /* Turns completely white for perfect contrast against the mixed gradient */
+    background: #ffffff; /* Becomes solid white for clean visibility over mixed gradient background */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
