@@ -18,7 +18,7 @@
 
 body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-    background: #f8fafc; /* Modern slate neutral background */
+    background: #f1f5f9; /* Slate background */
     color: #0f172a;
     min-height: 100vh;
     overflow-x: hidden;
@@ -60,100 +60,131 @@ body {
 
 /* MAIN CONTENT CONTAINER */
 .main-wrapper {
-    max-width: 1240px;
+    max-width: 1400px;
     margin: 24px auto;
     padding: 0 16px;
 }
 
-/* 1. COMPACT RESPONSIVE GRID SYSTEM */
-.cards-container {
+/* 1. CATEGORIZED COLUMN SECTION LAYOUT */
+.sections-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Minimized width */
-    gap: 12px; /* Tight gap */
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 20px;
+    align-items: start;
 }
 
-/* 2. MINIMIZED CARDS WITH VISIBLE BORDER COLOR */
+/* SECTION COLUMN CONTAINER */
+.section-column {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 16px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* SECTION HEADER TITLE */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    margin-bottom: 14px;
+    border-bottom: 2px solid #e2e8f0;
+    color: #0d2558;
+}
+
+.section-header i {
+    font-size: 18px;
+    color: #2563eb;
+}
+
+.section-header h4 {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+}
+
+.column-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 2. CIRCULAR CARDS WITH FOCUSING BORDERS */
 .card {
     background: #ffffff;
-    border: 1.5px solid #94a3b8; /* Defined, neat visible border */
-    border-radius: 10px;
-    padding: 8px 12px; /* Minimized height & padding */
+    border: 2px solid #cbd5e1; /* Clear base border */
+    border-radius: 28px; /* Circular pill shape */
+    padding: 6px 14px 6px 6px; /* Minimized padding */
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    outline: none;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 3. LARGER & 3D STYLED ICON BADGES */
+/* 3. CIRCULAR 3D ICON BADGES */
 .card .icon-badge {
-    width: 44px;
-    height: 44px;
-    /* 3D Depth Gradient */
+    width: 40px;
+    height: 40px;
     background: linear-gradient(135deg, #2563eb 0%, #0d2558 100%);
     color: #ffffff;
-    border-radius: 10px;
+    border-radius: 50%; /* Fully circular */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 12px;
+    margin-right: 10px;
     flex-shrink: 0;
-    font-size: 22px; /* Increased Icon Size */
+    font-size: 18px;
     
     /* 3D Extruded Layered Shadows */
     box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.6), /* Top light highlight */
-        0 3px 0 #071638,                           /* 3D extruded base */
-        0 5px 10px rgba(13, 37, 88, 0.25);         /* Ambient shadow */
+        inset 0 1px 2px rgba(255, 255, 255, 0.6),
+        0 2px 0 #071638,
+        0 4px 8px rgba(13, 37, 88, 0.2);
     
-    /* 3D Icon Emboss Effect */
-    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.4));
-    transition: all 0.2s ease;
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+    transition: all 0.22s ease;
 }
 
 /* CARD TEXT */
 .card span {
-    font-size: 13px; /* Slightly smaller font to fit compact cards */
+    font-size: 12.5px;
     font-weight: 600;
     color: #1e293b;
     flex-grow: 1;
-    line-height: 1.3;
+    line-height: 1.25;
     transition: color 0.2s ease;
 }
 
 /* CHEVRON ACTION INDICATOR */
 .card .arrow-icon {
     font-size: 11px;
-    color: #64748b;
-    margin-left: 8px;
+    color: #94a3b8;
+    margin-left: 6px;
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
-/* HOVER & INTERACTIVE STATES */
-.card:hover {
+/* 3. FOCUSING BORDER & HOVER STATES */
+.card:hover, .card:focus, .card:focus-visible {
+    border-color: #2563eb; /* High visibility focus border color */
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3), 0 6px 14px rgba(13, 37, 88, 0.12); /* Glowing focus ring */
     transform: translateY(-2px);
-    border-color: #0d2558; /* Neat border color accent on hover */
-    box-shadow: 0 6px 14px rgba(13, 37, 88, 0.12);
 }
 
-.card:hover .icon-badge {
+.card:hover .icon-badge, .card:focus .icon-badge {
     background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
-    color: #ffd700; /* Gold Icon pop on hover */
-    transform: translateY(-2px);
-    box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.8),
-        0 5px 0 #071638,
-        0 8px 14px rgba(13, 37, 88, 0.3);
+    color: #ffd700;
+    transform: scale(1.05);
 }
 
-.card:hover span {
+.card:hover span, .card:focus span {
     color: #0d2558;
 }
 
-.card:hover .arrow-icon {
-    color: #0d2558;
+.card:hover .arrow-icon, .card:focus .arrow-icon {
+    color: #2563eb;
     transform: translateX(3px);
 }
 
@@ -161,13 +192,13 @@ body {
     transform: translateY(0);
 }
 
-/* MOBILE RESPONSIVENESS */
+/* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 640px) {
     .header-container h1 { font-size: 1.3rem; }
     .header-container h2 { font-size: 0.95rem; }
     .header-container h3 { font-size: 0.8rem; }
-    .main-wrapper { padding: 0 12px; margin: 16px auto; }
-    .cards-container { grid-template-columns: 1fr; gap: 10px; }
+    .main-wrapper { padding: 0 10px; margin: 16px auto; }
+    .sections-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -181,9 +212,9 @@ body {
     <h3>Academic Year 2026-2027</h3>
 </header>
 
-<!-- Main Dashboard Body -->
+<!-- Main Categorized Dashboard -->
 <main class="main-wrapper">
-    <div class="cards-container" id="cardsContainer"></div>
+    <div class="sections-grid" id="sectionsGrid"></div>
 </main>
 
 <script>
@@ -234,46 +265,86 @@ const cardIcons = {
     R: '<i class="fa-solid fa-file-pen"></i>'             
 };
 
-const container = document.getElementById("cardsContainer");
+/* CATEGORIZED SECTIONS CONFIGURATION */
+const sections = [
+    {
+        title: "Student Data & Journey",
+        icon: "fa-graduation-cap",
+        keys: ["A", "B", "C", "G"]
+    },
+    {
+        title: "Company & Drives",
+        icon: "fa-city",
+        keys: ["D", "E", "I", "K", "L"]
+    },
+    {
+        title: "Reports & Accreditation",
+        icon: "fa-chart-line",
+        keys: ["F", "J", "M", "N", "O"]
+    },
+    {
+        title: "Admin & Operations",
+        icon: "fa-folder-gear",
+        keys: ["H", "P", "Q", "R"]
+    }
+];
 
-Object.keys(csvLinks).forEach((key) => {
-    const card = document.createElement("div");
-    card.className = "card";
+const sectionsGrid = document.getElementById("sectionsGrid");
 
-    card.innerHTML = `
-        <div style="display: flex; align-items: center; width: 88%;">
-            <div class="icon-badge">${cardIcons[key]}</div>
-            <span>${cardNames[key]}</span>
+// Build Categorized Columns & Cards
+sections.forEach(sec => {
+    const col = document.createElement("div");
+    col.className = "section-column";
+
+    let colHTML = `
+        <div class="section-header">
+            <i class="fa-solid ${sec.icon}"></i>
+            <h4>${sec.title}</h4>
         </div>
-        <i class="fa-solid fa-chevron-right arrow-icon"></i>
+        <div class="column-cards">
     `;
 
-    card.onclick = () => {
-        if(key === "A"){
-            localStorage.setItem("csvURL", csvLinks[key]);
-            window.location.href = "2027-Total_Students_Data.html";
-        }
-        else if(key === "B"){ window.location.href = "2027-Student_Enrollment_&_Selection_Journey.html"; }
-        else if(key === "C"){ window.location.href = "Placed_Students_Data.html"; }
-        else if(key === "D"){ window.location.href = "wipro.html"; }
-        else if(key === "E"){ window.location.href = "capgemini.html"; }
-        else if(key === "F"){ window.location.href = "cognizant.html"; }
-        else if(key === "G"){ window.location.href = "HR_Contact_Details.html"; }
-        else if(key === "H"){ window.location.href = "ibm.html"; }
-        else if(key === "I"){ window.location.href = "techmahindra.html"; }
-        else if(key === "J"){ window.location.href = "hcl.html"; }
-        else if(key === "K"){ window.location.href = "oracle.html"; }
-        else if(key === "L"){ window.location.href = "amazon.html"; }
-        else if(key === "M"){ window.location.href = "google.html"; }
-        else if(key === "N"){ window.location.href = "microsoft.html"; }
-        else if(key === "O"){ window.location.href = "kpit.html"; }
-        else if(key === "P"){ window.location.href = "zoho.html"; }
-        else if(key === "Q"){ window.location.href = "hexaware.html"; }
-        else if(key === "R"){ window.location.href = "genpact.html"; }
-    };
+    sec.keys.forEach(key => {
+        colHTML += `
+            <div class="card" tabindex="0" onclick="handleCardClick('${key}')">
+                <div style="display: flex; align-items: center; width: 85%;">
+                    <div class="icon-badge">${cardIcons[key]}</div>
+                    <span>${cardNames[key]}</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </div>
+        `;
+    });
 
-    container.appendChild(card);
+    colHTML += `</div>`;
+    col.innerHTML = colHTML;
+    sectionsGrid.appendChild(col);
 });
+
+// Click Routing Handler
+function handleCardClick(key) {
+    if(key === "A"){
+        localStorage.setItem("csvURL", csvLinks[key]);
+        window.location.href = "2027-Total_Students_Data.html";
+    }
+    else if(key === "B"){ window.location.href = "2027-Student_Enrollment_&_Selection_Journey.html"; }
+    else if(key === "C"){ window.location.href = "Placed_Students_Data.html"; }
+    else if(key === "D"){ window.location.href = "wipro.html"; }
+    else if(key === "E"){ window.location.href = "capgemini.html"; }
+    else if(key === "F"){ window.location.href = "cognizant.html"; }
+    else if(key === "G"){ window.location.href = "HR_Contact_Details.html"; }
+    else if(key === "H"){ window.location.href = "ibm.html"; }
+    else if(key === "I"){ window.location.href = "techmahindra.html"; }
+    else if(key === "J"){ window.location.href = "hcl.html"; }
+    else if(key === "K"){ window.location.href = "oracle.html"; }
+    else if(key === "L"){ window.location.href = "amazon.html"; }
+    else if(key === "M"){ window.location.href = "google.html"; }
+    else if(key === "N"){ window.location.href = "microsoft.html"; }
+    else if(key === "O"){ window.location.href = "kpit.html"; }
+    else if(key === "P"){ window.location.href = "zoho.html"; }
+    else if(key === "Q"){ window.location.href = "hexaware.html"; }
+    else if(key === "R"){ window.location.href = "genpact.html"; }
+}
 </script>
 
 </body>
