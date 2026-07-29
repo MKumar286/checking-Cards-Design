@@ -24,115 +24,128 @@ body {
     overflow-x: hidden;
 }
 
-/* 1. REAL WEBSITE FULL-WIDTH HEADER (No side spacing, fits any screen) */
+/* FULL-WIDTH HEADER */
 .header-container {
     width: 100%;
     background: linear-gradient(135deg, #071638 0%, #0d2558 100%);
-    padding: 22px 20px;
+    padding: 18px 20px;
     text-align: center;
-    border-bottom: 4px solid #ffd700; /* Gold brand accent */
+    border-bottom: 4px solid #ffd700;
     box-shadow: 0 4px 20px rgba(13, 37, 88, 0.2);
 }
 
 .header-container h1 {
-    color: #ffd700; /* Brilliant Gold */
-    font-size: 1.9rem;
+    color: #ffd700;
+    font-size: 1.7rem;
     font-weight: 800;
     letter-spacing: -0.3px;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .header-container h2 {
     color: #ffffff;
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 600;
     opacity: 0.95;
     margin-bottom: 2px;
 }
 
 .header-container h3 {
-    color: #fde68a; /* Soft Warm Gold */
-    font-size: 0.92rem;
+    color: #fde68a;
+    font-size: 0.88rem;
     font-weight: 500;
     letter-spacing: 0.5px;
 }
 
 /* MAIN CONTENT CONTAINER */
 .main-wrapper {
-    max-width: 1280px;
-    margin: 35px auto;
-    padding: 0 24px;
+    max-width: 1240px;
+    margin: 24px auto;
+    padding: 0 16px;
 }
 
-/* 2. MODERN RESPONSIVE CARD GRID SYSTEM */
+/* 1. COMPACT RESPONSIVE GRID SYSTEM */
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Minimized width */
+    gap: 12px; /* Tight gap */
     justify-content: center;
 }
 
-/* MODERN ELEVATED CARDS */
+/* 2. MINIMIZED CARDS WITH VISIBLE BORDER COLOR */
 .card {
     background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 16px 20px;
+    border: 1.5px solid #94a3b8; /* Defined, neat visible border */
+    border-radius: 10px;
+    padding: 8px 12px; /* Minimized height & padding */
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
-    position: relative;
 }
 
-/* CARD ICON BADGE */
+/* 3. LARGER & 3D STYLED ICON BADGES */
 .card .icon-badge {
     width: 44px;
     height: 44px;
-    background: #f0f5ff;
-    color: #0d2558;
+    /* 3D Depth Gradient */
+    background: linear-gradient(135deg, #2563eb 0%, #0d2558 100%);
+    color: #ffffff;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 16px;
+    margin-right: 12px;
     flex-shrink: 0;
-    font-size: 18px;
-    transition: all 0.25s ease;
+    font-size: 22px; /* Increased Icon Size */
+    
+    /* 3D Extruded Layered Shadows */
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.6), /* Top light highlight */
+        0 3px 0 #071638,                           /* 3D extruded base */
+        0 5px 10px rgba(13, 37, 88, 0.25);         /* Ambient shadow */
+    
+    /* 3D Icon Emboss Effect */
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.4));
+    transition: all 0.2s ease;
 }
 
 /* CARD TEXT */
 .card span {
-    font-size: 14px;
+    font-size: 13px; /* Slightly smaller font to fit compact cards */
     font-weight: 600;
     color: #1e293b;
     flex-grow: 1;
-    line-height: 1.35;
+    line-height: 1.3;
     transition: color 0.2s ease;
 }
 
 /* CHEVRON ACTION INDICATOR */
 .card .arrow-icon {
-    font-size: 12px;
-    color: #94a3b8;
-    margin-left: 12px;
+    font-size: 11px;
+    color: #64748b;
+    margin-left: 8px;
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
 /* HOVER & INTERACTIVE STATES */
 .card:hover {
-    transform: translateY(-4px);
-    border-color: #cbd5e1;
-    box-shadow: 0 12px 24px -6px rgba(13, 37, 88, 0.12), 0 4px 8px -4px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+    border-color: #0d2558; /* Neat border color accent on hover */
+    box-shadow: 0 6px 14px rgba(13, 37, 88, 0.12);
 }
 
 .card:hover .icon-badge {
-    background: #0d2558;
-    color: #ffd700;
-    transform: scale(1.05);
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    color: #ffd700; /* Gold Icon pop on hover */
+    transform: translateY(-2px);
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.8),
+        0 5px 0 #071638,
+        0 8px 14px rgba(13, 37, 88, 0.3);
 }
 
 .card:hover span {
@@ -141,27 +154,27 @@ body {
 
 .card:hover .arrow-icon {
     color: #0d2558;
-    transform: translateX(4px);
+    transform: translateX(3px);
 }
 
 .card:active {
-    transform: translateY(-1px);
+    transform: translateY(0);
 }
 
-/* RESPONSIVE ADJUSTMENTS */
+/* MOBILE RESPONSIVENESS */
 @media (max-width: 640px) {
-    .header-container h1 { font-size: 1.4rem; }
-    .header-container h2 { font-size: 1.0rem; }
-    .header-container h3 { font-size: 0.85rem; }
-    .main-wrapper { padding: 0 16px; margin: 20px auto; }
-    .cards-container { grid-template-columns: 1fr; gap: 12px; }
+    .header-container h1 { font-size: 1.3rem; }
+    .header-container h2 { font-size: 0.95rem; }
+    .header-container h3 { font-size: 0.8rem; }
+    .main-wrapper { padding: 0 12px; margin: 16px auto; }
+    .cards-container { grid-template-columns: 1fr; gap: 10px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Full-width Modern Header -->
+<!-- Full-width Header -->
 <header class="header-container">
     <h1>Mahatma Gandhi Institute of Technology</h1>
     <h2>Training and Placement Cell</h2>
@@ -228,7 +241,7 @@ Object.keys(csvLinks).forEach((key) => {
     card.className = "card";
 
     card.innerHTML = `
-        <div style="display: flex; align-items: center;">
+        <div style="display: flex; align-items: center; width: 88%;">
             <div class="icon-badge">${cardIcons[key]}</div>
             <span>${cardNames[key]}</span>
         </div>
