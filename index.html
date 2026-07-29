@@ -26,11 +26,11 @@ body {
     overflow-x: hidden;
 }
 
-/* FULL-WIDTH HEADER CONTAINER */
+/* FULL-WIDTH HEADER CONTAINER WITH CELEBRATING BACKGROUND & STARS */
 .header-container {
     width: 100%;
     background: linear-gradient(135deg, #071638 0%, #0d2558 100%);
-    padding: 20px 15px 16px 15px;
+    padding: 24px 15px 20px 15px;
     text-align: center;
     border-bottom: 4px solid #ffd700;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -38,49 +38,67 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden; /* Contains background curves & stars */
 }
 
-/* HEADING WRAPPER WITH TRISHUL MOTIFS */
-.heading-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
+/* 1. SWEEPING CURVED CELEBRATORY RAYS (Inspired by Curves.jpg) */
+.bg-curves {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 1250px;
-    margin: 0 auto;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.18;
 }
 
+/* 2. GLOWING 4-POINT SPARKLING STARS (Inspired by Curves.jpg) */
+.star-sparkle {
+    position: absolute;
+    pointer-events: none;
+    filter: drop-shadow(0 0 6px #ffd700) drop-shadow(0 0 10px #fcd34d);
+    animation: pulseSparkle 3s infinite alternate ease-in-out;
+}
+
+.star-1 { top: 15%; left: 8%; width: 22px; height: 22px; animation-delay: 0s; }
+.star-2 { bottom: 20%; left: 18%; width: 14px; height: 14px; animation-delay: 1s; }
+.star-3 { top: 20%; right: 10%; width: 26px; height: 26px; animation-delay: 0.5s; }
+.star-4 { bottom: 15%; right: 22%; width: 16px; height: 16px; animation-delay: 1.5s; }
+
+@keyframes pulseSparkle {
+    0% { transform: scale(0.85); opacity: 0.6; }
+    100% { transform: scale(1.15); opacity: 1; }
+}
+
+/* MAIN HEADING */
 .header-container h1 {
-    color: #ffd700; /* SOLID YELLOW TEXT */
-    font-size: 1.8rem;
+    color: #ffd700; /* Solid Yellow Text */
+    font-size: 1.85rem;
     font-weight: 800;
     letter-spacing: -0.2px;
     margin: 0;
     line-height: 1.2;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* TRISHUL SVG STYLING */
-.trishul-svg {
-    width: 38px;
-    height: 38px;
-    flex-shrink: 0;
-    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.4));
-}
-
-/* MAIN HEADING UNDERLINE WITH DOTTED MIDDLE DESIGN */
-.heading-underline {
-    margin: 6px 0 10px 0;
+/* 3. ELEGANT GOLD FLORAL DIVIDER LINE (Exact match from line.jpg) */
+.heading-divider {
+    margin: 8px 0 12px 0;
     width: 100%;
-    max-width: 500px;
+    max-width: 650px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
-.heading-underline svg {
+.heading-divider svg {
     width: 100%;
-    height: 14px;
+    height: 24px;
 }
 
 .header-container h2 {
@@ -89,6 +107,8 @@ body {
     font-weight: 600;
     opacity: 0.95;
     margin-bottom: 2px;
+    position: relative;
+    z-index: 2;
 }
 
 .header-container h3 {
@@ -96,6 +116,8 @@ body {
     font-size: 0.88rem;
     font-weight: 500;
     letter-spacing: 0.5px;
+    position: relative;
+    z-index: 2;
 }
 
 /* MAIN WRAPPER */
@@ -119,7 +141,7 @@ body {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-radius: 18px;
-    padding: 0 0 14px 0; /* Flush top header */
+    padding: 0 0 14px 0;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -245,10 +267,8 @@ body {
 }
 
 @media (max-width: 640px) {
-    .trishul-svg { width: 28px; height: 28px; }
-    .heading-wrapper { gap: 8px; }
     .sections-grid { grid-template-columns: 1fr; }
-    .header-container h1 { font-size: 1.25rem; }
+    .header-container h1 { font-size: 1.35rem; }
     .header-container h2 { font-size: 0.95rem; }
     .header-container h3 { font-size: 0.8rem; }
     .main-wrapper { padding: 0 10px; margin: 16px auto; }
@@ -258,60 +278,72 @@ body {
 
 <body>
 
-<!-- Header with Trishuls and Dotted Underline -->
+<!-- Full-width Header with Celebrating Background, Stars & Floral Line -->
 <header class="header-container">
     
-    <div class="heading-wrapper">
-        <!-- Left Trishul Motif -->
-        <svg class="trishul-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Center Spear -->
-            <path d="M 20 2 L 23 11 L 20 9 L 17 11 Z" fill="#ffd700"/>
-            <line x1="20" y1="9" x2="20" y2="38" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- Left Curved Blade -->
-            <path d="M 7 11 C 7 22, 20 24, 20 24" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-            <path d="M 7 11 L 4 16 L 9 15 Z" fill="#ffd700"/>
-            <!-- Right Curved Blade -->
-            <path d="M 33 11 C 33 22, 20 24, 20 24" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-            <path d="M 33 11 L 36 16 L 31 15 Z" fill="#ffd700"/>
-            <!-- Accent Base Line -->
-            <line x1="13" y1="31" x2="27" y2="31" stroke="#ffd700" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+    <!-- Background Sweeping Curved Rays (from Curves.jpg) -->
+    <svg class="bg-curves" viewBox="0 0 1000 200" preserveAspectRatio="none">
+        <path d="M -100,-20 Q 300,40 700,220" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+        <path d="M -50,-20 Q 350,60 750,220" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+        <path d="M 0,-20 Q 400,80 800,220" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+        <path d="M 50,-20 Q 450,100 850,220" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+        <path d="M 100,-20 Q 500,120 900,220" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+        <path d="M 150,-20 Q 550,140 950,220" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+    </svg>
 
-        <!-- Main Heading in Solid Yellow -->
-        <h1>Mahatma Gandhi Institute of Technology</h1>
+    <!-- Glowing 4-Point Gold Sparkling Stars (from Curves.jpg) -->
+    <svg class="star-sparkle star-1" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#ffd700"/></svg>
+    <svg class="star-sparkle star-2" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#ffd700"/></svg>
+    <svg class="star-sparkle star-3" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#ffd700"/></svg>
+    <svg class="star-sparkle star-4" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#ffd700"/></svg>
 
-        <!-- Right Trishul Motif -->
-        <svg class="trishul-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Center Spear -->
-            <path d="M 20 2 L 23 11 L 20 9 L 17 11 Z" fill="#ffd700"/>
-            <line x1="20" y1="9" x2="20" y2="38" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- Left Curved Blade -->
-            <path d="M 7 11 C 7 22, 20 24, 20 24" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-            <path d="M 7 11 L 4 16 L 9 15 Z" fill="#ffd700"/>
-            <!-- Right Curved Blade -->
-            <path d="M 33 11 C 33 22, 20 24, 20 24" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-            <path d="M 33 11 L 36 16 L 31 15 Z" fill="#ffd700"/>
-            <!-- Accent Base Line -->
-            <line x1="13" y1="31" x2="27" y2="31" stroke="#ffd700" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-    </div>
+    <!-- Main Title in Solid Yellow -->
+    <h1>Mahatma Gandhi Institute of Technology</h1>
 
-    <!-- Main Heading Underline with Center Dotted Pattern -->
-    <div class="heading-underline">
-        <svg viewBox="0 0 400 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Left Solid Line -->
-            <line x1="10" y1="6" x2="160" y2="6" stroke="#ffd700" stroke-width="2" stroke-linecap="round"/>
+    <!-- Gold Floral Divider Line (Exact design from line.jpg) -->
+    <div class="heading-divider">
+        <svg viewBox="0 0 800 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Left Tapered Line -->
+            <path d="M 20 15 L 340 15" stroke="url(#goldGradLeft)" stroke-width="2" stroke-linecap="round"/>
             
-            <!-- Middle Dotted Design -->
-            <circle cx="172" cy="6" r="2" fill="#ffd700"/>
-            <circle cx="183" cy="6" r="3" fill="#ffd700"/>
-            <circle cx="196" cy="6" r="4.5" fill="#ffd700"/>
-            <circle cx="204" cy="6" r="4.5" fill="#ffd700"/>
-            <circle cx="217" cy="6" r="3" fill="#ffd700"/>
-            <circle cx="228" cy="6" r="2" fill="#ffd700"/>
+            <!-- Left Diamond Accent -->
+            <polygon points="350,15 355,11 360,15 355,19" fill="#ffd700"/>
             
-            <!-- Right Solid Line -->
-            <line x1="240" y1="6" x2="390" y2="6" stroke="#ffd700" stroke-width="2" stroke-linecap="round"/>
+            <!-- Central Floral / Fleur-de-Lis Motif -->
+            <g transform="translate(400,15)">
+                <!-- Top Petal -->
+                <path d="M 0 0 C -7 -8, 0 -17, 0 -17 C 0 -17, 7 -8, 0 0 Z" fill="#ffd700"/>
+                <!-- Bottom Petal -->
+                <path d="M 0 0 C -7 8, 0 17, 0 17 C 0 17, 7 8, 0 0 Z" fill="#ffd700"/>
+                <!-- Left Petal -->
+                <path d="M 0 0 C -8 -7, -17 0, -17 0 C -17 0, -8 7, 0 0 Z" fill="#ffd700"/>
+                <!-- Right Petal -->
+                <path d="M 0 0 C 8 -7, 17 0, 17 0 C 17 0, 8 7, 0 0 Z" fill="#ffd700"/>
+                <!-- Diagonal Corner Accents -->
+                <circle cx="-6" cy="-6" r="1.5" fill="#fcd34d"/>
+                <circle cx="6" cy="-6" r="1.5" fill="#fcd34d"/>
+                <circle cx="-6" cy="6" r="1.5" fill="#fcd34d"/>
+                <circle cx="6" cy="6" r="1.5" fill="#fcd34d"/>
+                <!-- Center Core Dot -->
+                <circle cx="0" cy="0" r="2.5" fill="#ffffff"/>
+            </g>
+            
+            <!-- Right Diamond Accent -->
+            <polygon points="440,15 445,11 450,15 445,19" fill="#ffd700"/>
+            
+            <!-- Right Tapered Line -->
+            <path d="M 460 15 L 780 15" stroke="url(#goldGradRight)" stroke-width="2" stroke-linecap="round"/>
+            
+            <defs>
+                <linearGradient id="goldGradLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#ffd700" stop-opacity="0"/>
+                    <stop offset="100%" stop-color="#ffd700" stop-opacity="1"/>
+                </linearGradient>
+                <linearGradient id="goldGradRight" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#ffd700" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
+                </linearGradient>
+            </defs>
         </svg>
     </div>
 
