@@ -26,11 +26,11 @@ body {
     overflow-x: hidden;
 }
 
-/* FULL-WIDTH HEADER CONTAINER WITH CELEBRATING BACKGROUND & STARS */
+/* FULL-WIDTH HEADER CONTAINER */
 .header-container {
     width: 100%;
     background: linear-gradient(135deg, #071638 0%, #0d2558 100%);
-    padding: 24px 15px;
+    padding: 24px 15px 20px 15px;
     text-align: center;
     border-bottom: 4px solid #ffd700;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -53,7 +53,7 @@ body {
     opacity: 0.18;
 }
 
-/* GLOWING 4-POINT SPARKLING STARS */
+/* GLOWING 4-POINT SPARKLING BACKGROUND STARS */
 .star-sparkle {
     position: absolute;
     pointer-events: none;
@@ -71,81 +71,62 @@ body {
     100% { transform: scale(1.15); opacity: 1; }
 }
 
-/* DESIGNED LINES FRAME AROUND THE MAIN THREE HEADINGS */
-.headings-frame {
+/* HEADINGS WRAPPER (NO BOX LINES) */
+.headings-wrapper {
     position: relative;
     z-index: 2;
-    padding: 20px 36px;
-    margin: 6px auto;
-    max-width: 900px;
-    width: 92%;
-    border: 1.5px solid rgba(255, 215, 0, 0.6);
-    border-radius: 12px;
-    background: rgba(7, 22, 56, 0.45);
-    backdrop-filter: blur(4px);
-    box-shadow: 
-        inset 0 0 20px rgba(255, 215, 0, 0.12),
-        0 8px 24px rgba(0, 0, 0, 0.35);
+    margin: 0 auto;
+    max-width: 950px;
+    width: 100%;
 }
 
-/* CORNER FLOURISH ACCENTS FOR THE HEADINGS FRAME */
-.corner-flourish {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    pointer-events: none;
-}
-.corner-tl { top: -2px; left: -2px; }
-.corner-tr { top: -2px; right: -2px; transform: scaleX(-1); }
-.corner-bl { bottom: -2px; left: -2px; transform: scaleY(-1); }
-.corner-br { bottom: -2px; right: -2px; transform: scale(-1); }
-
-/* MAIN THREE HEADINGS - TAHOMA FONT STYLE */
-.header-container h1,
-.header-container h2,
-.header-container h3 {
-    font-family: 'Tahoma', Geneva, Verdana, sans-serif; /* TAHOMA FONT */
+/* TAHOMA FONT STYLE APPLIED TO ALL HEADINGS */
+h1, h2, h3, h4, .section-header h4 {
+    font-family: 'Tahoma', Geneva, Verdana, sans-serif !important;
 }
 
+/* MAIN HEADING 1 */
 .header-container h1 {
     color: #ffd700; /* Solid Yellow Text */
-    font-size: 1.85rem;
+    font-size: 1.95rem;
     font-weight: 800;
     letter-spacing: -0.2px;
-    margin: 0;
-    line-height: 1.25;
+    margin: 0 0 4px 0;
+    line-height: 1.2;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
-.header-container h2 {
-    color: #ffffff;
-    font-size: 1.1rem;
-    font-weight: 700;
-    opacity: 0.98;
-    margin-bottom: 3px;
-    letter-spacing: 0.2px;
-}
-
-.header-container h3 {
-    color: #fde68a;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.6px;
-}
-
-/* ELEGANT GOLD FLORAL DIVIDER LINE */
-.heading-divider {
-    margin: 10px 0 12px 0;
+/* SOLID SHARP-ENDED LINES WITH CENTER STAR SPARKLE DIVIDER */
+.star-sharp-divider {
+    margin: 6px auto 10px auto;
     width: 100%;
+    max-width: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.heading-divider svg {
+.star-sharp-divider svg {
     width: 100%;
-    max-width: 650px;
-    height: 24px;
+    height: 20px;
+}
+
+/* SUBHEADINGS CLOSELY ALIGNED UNDER MAIN HEADING */
+.header-container h2 {
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 700;
+    opacity: 0.98;
+    margin: 0 0 2px 0;
+    letter-spacing: 0.3px;
+}
+
+.header-container h3 {
+    color: #fde68a;
+    font-size: 0.92rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.6px;
 }
 
 /* MAIN WRAPPER */
@@ -295,11 +276,10 @@ body {
 }
 
 @media (max-width: 640px) {
-    .headings-frame { padding: 16px 16px; }
     .sections-grid { grid-template-columns: 1fr; }
-    .header-container h1 { font-size: 1.35rem; }
-    .header-container h2 { font-size: 0.95rem; }
-    .header-container h3 { font-size: 0.8rem; }
+    .header-container h1 { font-size: 1.4rem; }
+    .header-container h2 { font-size: 0.98rem; }
+    .header-container h3 { font-size: 0.82rem; }
     .main-wrapper { padding: 0 10px; margin: 16px auto; }
 }
 </style>
@@ -326,68 +306,34 @@ body {
     <svg class="star-sparkle star-3" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#ffd700"/></svg>
     <svg class="star-sparkle star-4" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#ffd700"/></svg>
 
-    <!-- DESIGNED LINE FRAME ENCLOSING THE THREE MAIN HEADINGS -->
-    <div class="headings-frame">
-        <!-- SVG Corner Line Ornaments -->
-        <svg class="corner-flourish corner-tl" viewBox="0 0 32 32" fill="none">
-            <path d="M 0 12 L 0 0 L 12 0" stroke="#ffd700" stroke-width="3"/>
-            <path d="M 4 18 L 4 4 L 18 4" stroke="#ffd700" stroke-width="1.5"/>
-            <circle cx="2" cy="2" r="2" fill="#ffd700"/>
-        </svg>
-        <svg class="corner-flourish corner-tr" viewBox="0 0 32 32" fill="none">
-            <path d="M 0 12 L 0 0 L 12 0" stroke="#ffd700" stroke-width="3"/>
-            <path d="M 4 18 L 4 4 L 18 4" stroke="#ffd700" stroke-width="1.5"/>
-            <circle cx="2" cy="2" r="2" fill="#ffd700"/>
-        </svg>
-        <svg class="corner-flourish corner-bl" viewBox="0 0 32 32" fill="none">
-            <path d="M 0 12 L 0 0 L 12 0" stroke="#ffd700" stroke-width="3"/>
-            <path d="M 4 18 L 4 4 L 18 4" stroke="#ffd700" stroke-width="1.5"/>
-            <circle cx="2" cy="2" r="2" fill="#ffd700"/>
-        </svg>
-        <svg class="corner-flourish corner-br" viewBox="0 0 32 32" fill="none">
-            <path d="M 0 12 L 0 0 L 12 0" stroke="#ffd700" stroke-width="3"/>
-            <path d="M 4 18 L 4 4 L 18 4" stroke="#ffd700" stroke-width="1.5"/>
-            <circle cx="2" cy="2" r="2" fill="#ffd700"/>
-        </svg>
-
+    <!-- HEADINGS AREA (NO BOX BORDERS) -->
+    <div class="headings-wrapper">
+        
         <!-- Main Title (Heading 1) -->
         <h1>Mahatma Gandhi Institute of Technology</h1>
 
-        <!-- Gold Floral Divider Line -->
-        <div class="heading-divider">
-            <svg viewBox="0 0 800 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 20 15 L 340 15" stroke="url(#goldGradLeft)" stroke-width="2" stroke-linecap="round"/>
-                <polygon points="350,15 355,11 360,15 355,19" fill="#ffd700"/>
-                <g transform="translate(400,15)">
-                    <path d="M 0 0 C -7 -8, 0 -17, 0 -17 C 0 -17, 7 -8, 0 0 Z" fill="#ffd700"/>
-                    <path d="M 0 0 C -7 8, 0 17, 0 17 C 0 17, 7 8, 0 0 Z" fill="#ffd700"/>
-                    <path d="M 0 0 C -8 -7, -17 0, -17 0 C -17 0, -8 7, 0 0 Z" fill="#ffd700"/>
-                    <path d="M 0 0 C 8 -7, 17 0, 17 0 C 17 0, 8 7, 0 0 Z" fill="#ffd700"/>
-                    <circle cx="-6" cy="-6" r="1.5" fill="#fcd34d"/>
-                    <circle cx="6" cy="-6" r="1.5" fill="#fcd34d"/>
-                    <circle cx="-6" cy="6" r="1.5" fill="#fcd34d"/>
-                    <circle cx="6" cy="6" r="1.5" fill="#fcd34d"/>
-                    <circle cx="0" cy="0" r="2.5" fill="#ffffff"/>
+        <!-- SOLID SHARP-ENDED LINES WITH CENTER STAR SPARKLE DIVIDER -->
+        <div class="star-sharp-divider">
+            <svg viewBox="0 0 500 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Left Solid Line (Sharp Ended at Left) -->
+                <polygon points="20,12 230,10.5 230,13.5" fill="#ffd700"/>
+                
+                <!-- Center Star Sparkle Motif -->
+                <g transform="translate(250, 12)">
+                    <circle cx="0" cy="0" r="7" fill="#ffd700" opacity="0.35"/>
+                    <path d="M 0 -11 Q 0 0 11 0 Q 0 0 0 11 Q 0 0 -11 0 Q 0 0 0 -11 Z" fill="#ffd700"/>
+                    <path d="M 0 -5 Q 0 0 5 0 Q 0 0 0 5 Q 0 0 -5 0 Q 0 0 0 -5 Z" fill="#ffffff"/>
                 </g>
-                <polygon points="440,15 445,11 450,15 445,19" fill="#ffd700"/>
-                <path d="M 460 15 L 780 15" stroke="url(#goldGradRight)" stroke-width="2" stroke-linecap="round"/>
-                <defs>
-                    <linearGradient id="goldGradLeft" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#ffd700" stop-opacity="0"/>
-                        <stop offset="100%" stop-color="#ffd700" stop-opacity="1"/>
-                    </linearGradient>
-                    <linearGradient id="goldGradRight" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#ffd700" stop-opacity="1"/>
-                        <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
-                    </linearGradient>
-                </defs>
+                
+                <!-- Right Solid Line (Sharp Ended at Right) -->
+                <polygon points="480,12 270,10.5 270,13.5" fill="#ffd700"/>
             </svg>
         </div>
 
-        <!-- Subtitle (Heading 2) -->
+        <!-- Subtitle (Heading 2) shifted directly under main heading -->
         <h2>Training and Placement Cell</h2>
 
-        <!-- Academic Year (Heading 3) -->
+        <!-- Academic Year (Heading 3) shifted directly under Heading 2 -->
         <h3>Academic Year 2026-2027</h3>
     </div>
 </header>
