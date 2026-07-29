@@ -16,9 +16,16 @@
     padding: 0;
 }
 
+/* 2. BEAUTIFUL AMBIENT MESH BACKGROUND FOR SECTIONS (Distinct from dark header) */
 body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-    background: #f1f5f9; /* Slate background */
+    background-color: #f8fafc;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.08) 0px, transparent 50%);
+    background-attachment: fixed;
     color: #0f172a;
     min-height: 100vh;
     overflow-x: hidden;
@@ -28,24 +35,24 @@ body {
 .header-container {
     width: 100%;
     background: linear-gradient(135deg, #071638 0%, #0d2558 100%);
-    padding: 18px 20px;
+    padding: 20px;
     text-align: center;
     border-bottom: 4px solid #ffd700;
-    box-shadow: 0 4px 20px rgba(13, 37, 88, 0.2);
+    box-shadow: 0 4px 24px rgba(7, 22, 56, 0.35);
 }
 
 .header-container h1 {
     color: #ffd700;
-    font-size: 1.7rem;
+    font-size: 1.75rem;
     font-weight: 800;
     letter-spacing: -0.3px;
     margin-bottom: 3px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
 .header-container h2 {
     color: #ffffff;
-    font-size: 1.05rem;
+    font-size: 1.08rem;
     font-weight: 600;
     opacity: 0.95;
     margin-bottom: 2px;
@@ -60,26 +67,28 @@ body {
 
 /* MAIN CONTENT CONTAINER */
 .main-wrapper {
-    max-width: 1400px;
-    margin: 24px auto;
-    padding: 0 16px;
+    max-width: 1440px;
+    margin: 28px auto;
+    padding: 0 18px;
 }
 
-/* 1. CATEGORIZED COLUMN SECTION LAYOUT */
+/* CATEGORIZED SECTION GRID */
 .sections-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
+    gap: 22px;
     align-items: start;
 }
 
-/* SECTION COLUMN CONTAINER */
+/* FROSTED GLASS SECTION COLUMNS */
 .section-column {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 16px;
-    border: 1px solid #cbd5e1;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 22px;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(0, 0, 0, 0.02);
 }
 
 /* SECTION HEADER TITLE */
@@ -88,14 +97,13 @@ body {
     align-items: center;
     gap: 10px;
     padding-bottom: 12px;
-    margin-bottom: 14px;
-    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 16px;
+    border-bottom: 2px solid rgba(226, 232, 240, 0.8);
     color: #0d2558;
 }
 
 .section-header i {
-    font-size: 18px;
-    color: #2563eb;
+    font-size: 19px;
 }
 
 .section-header h4 {
@@ -107,44 +115,50 @@ body {
 .column-cards {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
-/* 2. CIRCULAR CARDS WITH FOCUSING BORDERS */
+/* 1. CIRCULAR CARDS WITH GLOWING BORDER EFFECTS */
 .card {
     background: #ffffff;
-    border: 2px solid #cbd5e1; /* Clear base border */
-    border-radius: 28px; /* Circular pill shape */
-    padding: 6px 14px 6px 6px; /* Minimized padding */
+    border-radius: 50px; /* Fully circular pill shape */
+    padding: 6px 16px 6px 6px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
     outline: none;
-    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Dynamic Glowing Border via CSS Variables */
+    border: 2px solid var(--glow-color, #2563eb);
+    box-shadow: 
+        0 0 10px var(--glow-shadow, rgba(37, 99, 235, 0.2)),
+        inset 0 0 6px var(--glow-shadow, rgba(37, 99, 235, 0.08));
+    
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 3. CIRCULAR 3D ICON BADGES */
+/* CIRCULAR 3D ICON BADGE */
 .card .icon-badge {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, #2563eb 0%, #0d2558 100%);
+    background: var(--badge-bg, linear-gradient(135deg, #2563eb 0%, #0d2558 100%));
     color: #ffffff;
-    border-radius: 50%; /* Fully circular */
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
+    margin-right: 12px;
     flex-shrink: 0;
-    font-size: 18px;
+    font-size: 17px;
     
-    /* 3D Extruded Layered Shadows */
+    /* 3D Extrusion Shadow */
     box-shadow: 
         inset 0 1px 2px rgba(255, 255, 255, 0.6),
-        0 2px 0 #071638,
-        0 4px 8px rgba(13, 37, 88, 0.2);
+        0 2px 0 var(--badge-shadow, #071638),
+        0 4px 8px rgba(0, 0, 0, 0.15);
     
-    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
     transition: all 0.22s ease;
 }
 
@@ -161,36 +175,78 @@ body {
 /* CHEVRON ACTION INDICATOR */
 .card .arrow-icon {
     font-size: 11px;
-    color: #94a3b8;
+    color: var(--glow-color, #2563eb);
     margin-left: 6px;
-    transition: transform 0.2s ease, color 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.7;
 }
 
-/* 3. FOCUSING BORDER & HOVER STATES */
-.card:hover, .card:focus, .card:focus-visible {
-    border-color: #2563eb; /* High visibility focus border color */
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3), 0 6px 14px rgba(13, 37, 88, 0.12); /* Glowing focus ring */
-    transform: translateY(-2px);
+/* INTENSE HOVER & FOCUS GLOW STATES */
+.card:hover, .card:focus-visible {
+    transform: translateY(-3px) scale(1.01);
+    
+    /* Expanded Neon Glow Effect */
+    box-shadow: 
+        0 0 18px var(--glow-color, #2563eb),
+        0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-.card:hover .icon-badge, .card:focus .icon-badge {
-    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+.card:hover .icon-badge, .card:focus-visible .icon-badge {
+    transform: scale(1.08) rotate(-3deg);
     color: #ffd700;
-    transform: scale(1.05);
 }
 
-.card:hover span, .card:focus span {
-    color: #0d2558;
+.card:hover span, .card:focus-visible span {
+    color: #071638;
+    font-weight: 700;
 }
 
-.card:hover .arrow-icon, .card:focus .arrow-icon {
-    color: #2563eb;
-    transform: translateX(3px);
+.card:hover .arrow-icon, .card:focus-visible .arrow-icon {
+    opacity: 1;
+    transform: translateX(4px);
 }
 
 .card:active {
-    transform: translateY(0);
+    transform: translateY(-1px);
 }
+
+/* SECTION-SPECIFIC COLOR SCHEMES (BLUE, EMERALD, PURPLE, ROSE) */
+
+/* Section 1: Student Data (Blue Glow) */
+.sec-blue {
+    --glow-color: #2563eb;
+    --glow-shadow: rgba(37, 99, 235, 0.25);
+    --badge-bg: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    --badge-shadow: #1e3a8a;
+}
+.sec-blue-header { color: #1d4ed8; }
+
+/* Section 2: Company & Drives (Emerald Glow) */
+.sec-emerald {
+    --glow-color: #10b981;
+    --glow-shadow: rgba(16, 185, 129, 0.25);
+    --badge-bg: linear-gradient(135deg, #10b981 0%, #047857 100%);
+    --badge-shadow: #064e3b;
+}
+.sec-emerald-header { color: #047857; }
+
+/* Section 3: Reports & Accreditation (Purple Glow) */
+.sec-purple {
+    --glow-color: #8b5cf6;
+    --glow-shadow: rgba(139, 92, 246, 0.25);
+    --badge-bg: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    --badge-shadow: #4c1d95;
+}
+.sec-purple-header { color: #6d28d9; }
+
+/* Section 4: Admin & Operations (Rose Glow) */
+.sec-rose {
+    --glow-color: #f43f5e;
+    --glow-shadow: rgba(244, 63, 94, 0.25);
+    --badge-bg: linear-gradient(135deg, #f43f5e 0%, #be123c 100%);
+    --badge-shadow: #881337;
+}
+.sec-rose-header { color: #be123c; }
 
 /* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 640px) {
@@ -212,7 +268,7 @@ body {
     <h3>Academic Year 2026-2027</h3>
 </header>
 
-<!-- Main Categorized Dashboard -->
+<!-- Main Dashboard Body with Mesh Background -->
 <main class="main-wrapper">
     <div class="sections-grid" id="sectionsGrid"></div>
 </main>
@@ -265,39 +321,47 @@ const cardIcons = {
     R: '<i class="fa-solid fa-file-pen"></i>'             
 };
 
-/* CATEGORIZED SECTIONS CONFIGURATION */
+/* CATEGORIZED SECTIONS CONFIGURATION WITH INDIVIDUAL GLOW THEMES */
 const sections = [
     {
         title: "Student Data & Journey",
         icon: "fa-graduation-cap",
+        themeClass: "sec-blue",
+        headerClass: "sec-blue-header",
         keys: ["A", "B", "C", "G"]
     },
     {
         title: "Company & Drives",
         icon: "fa-city",
+        themeClass: "sec-emerald",
+        headerClass: "sec-emerald-header",
         keys: ["D", "E", "I", "K", "L"]
     },
     {
         title: "Reports & Accreditation",
         icon: "fa-chart-line",
+        themeClass: "sec-purple",
+        headerClass: "sec-purple-header",
         keys: ["F", "J", "M", "N", "O"]
     },
     {
         title: "Admin & Operations",
         icon: "fa-folder-gear",
+        themeClass: "sec-rose",
+        headerClass: "sec-rose-header",
         keys: ["H", "P", "Q", "R"]
     }
 ];
 
 const sectionsGrid = document.getElementById("sectionsGrid");
 
-// Build Categorized Columns & Cards
+// Build Categorized Columns & Cards dynamically
 sections.forEach(sec => {
     const col = document.createElement("div");
     col.className = "section-column";
 
     let colHTML = `
-        <div class="section-header">
+        <div class="section-header ${sec.headerClass}">
             <i class="fa-solid ${sec.icon}"></i>
             <h4>${sec.title}</h4>
         </div>
@@ -306,7 +370,7 @@ sections.forEach(sec => {
 
     sec.keys.forEach(key => {
         colHTML += `
-            <div class="card" tabindex="0" onclick="handleCardClick('${key}')">
+            <div class="card ${sec.themeClass}" tabindex="0" onclick="handleCardClick('${key}')">
                 <div style="display: flex; align-items: center; width: 85%;">
                     <div class="icon-badge">${cardIcons[key]}</div>
                     <span>${cardNames[key]}</span>
@@ -321,7 +385,7 @@ sections.forEach(sec => {
     sectionsGrid.appendChild(col);
 });
 
-// Click Routing Handler
+// Navigation Handler
 function handleCardClick(key) {
     if(key === "A"){
         localStorage.setItem("csvURL", csvLinks[key]);
