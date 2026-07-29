@@ -30,7 +30,7 @@ body {
 .header-container {
     width: 100%;
     background: linear-gradient(135deg, #071638 0%, #0d2558 100%);
-    padding: 24px 15px 20px 15px;
+    padding: 24px 15px;
     text-align: center;
     border-bottom: 4px solid #ffd700;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -39,10 +39,10 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow: hidden; /* Contains background curves & stars */
+    overflow: hidden;
 }
 
-/* 1. SWEEPING CURVED CELEBRATORY RAYS (Inspired by Curves.jpg) */
+/* SWEEPING CURVED CELEBRATORY RAYS */
 .bg-curves {
     position: absolute;
     top: 0;
@@ -53,7 +53,7 @@ body {
     opacity: 0.18;
 }
 
-/* 2. GLOWING 4-POINT SPARKLING STARS (Inspired by Curves.jpg) */
+/* GLOWING 4-POINT SPARKLING STARS */
 .star-sparkle {
     position: absolute;
     pointer-events: none;
@@ -61,63 +61,91 @@ body {
     animation: pulseSparkle 3s infinite alternate ease-in-out;
 }
 
-.star-1 { top: 15%; left: 8%; width: 22px; height: 22px; animation-delay: 0s; }
-.star-2 { bottom: 20%; left: 18%; width: 14px; height: 14px; animation-delay: 1s; }
-.star-3 { top: 20%; right: 10%; width: 26px; height: 26px; animation-delay: 0.5s; }
-.star-4 { bottom: 15%; right: 22%; width: 16px; height: 16px; animation-delay: 1.5s; }
+.star-1 { top: 12%; left: 6%; width: 22px; height: 22px; animation-delay: 0s; }
+.star-2 { bottom: 15%; left: 12%; width: 14px; height: 14px; animation-delay: 1s; }
+.star-3 { top: 15%; right: 8%; width: 26px; height: 26px; animation-delay: 0.5s; }
+.star-4 { bottom: 12%; right: 14%; width: 16px; height: 16px; animation-delay: 1.5s; }
 
 @keyframes pulseSparkle {
     0% { transform: scale(0.85); opacity: 0.6; }
     100% { transform: scale(1.15); opacity: 1; }
 }
 
-/* MAIN HEADING */
+/* DESIGNED LINES FRAME AROUND THE MAIN THREE HEADINGS */
+.headings-frame {
+    position: relative;
+    z-index: 2;
+    padding: 20px 36px;
+    margin: 6px auto;
+    max-width: 900px;
+    width: 92%;
+    border: 1.5px solid rgba(255, 215, 0, 0.6);
+    border-radius: 12px;
+    background: rgba(7, 22, 56, 0.45);
+    backdrop-filter: blur(4px);
+    box-shadow: 
+        inset 0 0 20px rgba(255, 215, 0, 0.12),
+        0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* CORNER FLOURISH ACCENTS FOR THE HEADINGS FRAME */
+.corner-flourish {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+}
+.corner-tl { top: -2px; left: -2px; }
+.corner-tr { top: -2px; right: -2px; transform: scaleX(-1); }
+.corner-bl { bottom: -2px; left: -2px; transform: scaleY(-1); }
+.corner-br { bottom: -2px; right: -2px; transform: scale(-1); }
+
+/* MAIN THREE HEADINGS - TAHOMA FONT STYLE */
+.header-container h1,
+.header-container h2,
+.header-container h3 {
+    font-family: 'Tahoma', Geneva, Verdana, sans-serif; /* TAHOMA FONT */
+}
+
 .header-container h1 {
     color: #ffd700; /* Solid Yellow Text */
     font-size: 1.85rem;
     font-weight: 800;
     letter-spacing: -0.2px;
     margin: 0;
-    line-height: 1.2;
-    position: relative;
-    z-index: 2;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-/* 3. ELEGANT GOLD FLORAL DIVIDER LINE (Exact match from line.jpg) */
-.heading-divider {
-    margin: 8px 0 12px 0;
-    width: 100%;
-    max-width: 650px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
-
-.heading-divider svg {
-    width: 100%;
-    height: 24px;
+    line-height: 1.25;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .header-container h2 {
     color: #ffffff;
-    font-size: 1.08rem;
-    font-weight: 600;
-    opacity: 0.95;
-    margin-bottom: 2px;
-    position: relative;
-    z-index: 2;
+    font-size: 1.1rem;
+    font-weight: 700;
+    opacity: 0.98;
+    margin-bottom: 3px;
+    letter-spacing: 0.2px;
 }
 
 .header-container h3 {
     color: #fde68a;
-    font-size: 0.88rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    position: relative;
-    z-index: 2;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+}
+
+/* ELEGANT GOLD FLORAL DIVIDER LINE */
+.heading-divider {
+    margin: 10px 0 12px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading-divider svg {
+    width: 100%;
+    max-width: 650px;
+    height: 24px;
 }
 
 /* MAIN WRAPPER */
@@ -267,6 +295,7 @@ body {
 }
 
 @media (max-width: 640px) {
+    .headings-frame { padding: 16px 16px; }
     .sections-grid { grid-template-columns: 1fr; }
     .header-container h1 { font-size: 1.35rem; }
     .header-container h2 { font-size: 0.95rem; }
@@ -278,10 +307,10 @@ body {
 
 <body>
 
-<!-- Full-width Header with Celebrating Background, Stars & Floral Line -->
+<!-- Full-width Header -->
 <header class="header-container">
     
-    <!-- Background Sweeping Curved Rays (from Curves.jpg) -->
+    <!-- Background Sweeping Curved Rays -->
     <svg class="bg-curves" viewBox="0 0 1000 200" preserveAspectRatio="none">
         <path d="M -100,-20 Q 300,40 700,220" stroke="#ffffff" stroke-width="1.5" fill="none"/>
         <path d="M -50,-20 Q 350,60 750,220" stroke="#ffffff" stroke-width="1.5" fill="none"/>
@@ -291,64 +320,76 @@ body {
         <path d="M 150,-20 Q 550,140 950,220" stroke="#ffffff" stroke-width="1.5" fill="none"/>
     </svg>
 
-    <!-- Glowing 4-Point Gold Sparkling Stars (from Curves.jpg) -->
+    <!-- Glowing 4-Point Gold Sparkling Stars -->
     <svg class="star-sparkle star-1" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#ffd700"/></svg>
     <svg class="star-sparkle star-2" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#ffd700"/></svg>
     <svg class="star-sparkle star-3" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#ffd700"/></svg>
     <svg class="star-sparkle star-4" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#ffd700"/></svg>
 
-    <!-- Main Title in Solid Yellow -->
-    <h1>Mahatma Gandhi Institute of Technology</h1>
-
-    <!-- Gold Floral Divider Line (Exact design from line.jpg) -->
-    <div class="heading-divider">
-        <svg viewBox="0 0 800 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Left Tapered Line -->
-            <path d="M 20 15 L 340 15" stroke="url(#goldGradLeft)" stroke-width="2" stroke-linecap="round"/>
-            
-            <!-- Left Diamond Accent -->
-            <polygon points="350,15 355,11 360,15 355,19" fill="#ffd700"/>
-            
-            <!-- Central Floral / Fleur-de-Lis Motif -->
-            <g transform="translate(400,15)">
-                <!-- Top Petal -->
-                <path d="M 0 0 C -7 -8, 0 -17, 0 -17 C 0 -17, 7 -8, 0 0 Z" fill="#ffd700"/>
-                <!-- Bottom Petal -->
-                <path d="M 0 0 C -7 8, 0 17, 0 17 C 0 17, 7 8, 0 0 Z" fill="#ffd700"/>
-                <!-- Left Petal -->
-                <path d="M 0 0 C -8 -7, -17 0, -17 0 C -17 0, -8 7, 0 0 Z" fill="#ffd700"/>
-                <!-- Right Petal -->
-                <path d="M 0 0 C 8 -7, 17 0, 17 0 C 17 0, 8 7, 0 0 Z" fill="#ffd700"/>
-                <!-- Diagonal Corner Accents -->
-                <circle cx="-6" cy="-6" r="1.5" fill="#fcd34d"/>
-                <circle cx="6" cy="-6" r="1.5" fill="#fcd34d"/>
-                <circle cx="-6" cy="6" r="1.5" fill="#fcd34d"/>
-                <circle cx="6" cy="6" r="1.5" fill="#fcd34d"/>
-                <!-- Center Core Dot -->
-                <circle cx="0" cy="0" r="2.5" fill="#ffffff"/>
-            </g>
-            
-            <!-- Right Diamond Accent -->
-            <polygon points="440,15 445,11 450,15 445,19" fill="#ffd700"/>
-            
-            <!-- Right Tapered Line -->
-            <path d="M 460 15 L 780 15" stroke="url(#goldGradRight)" stroke-width="2" stroke-linecap="round"/>
-            
-            <defs>
-                <linearGradient id="goldGradLeft" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#ffd700" stop-opacity="0"/>
-                    <stop offset="100%" stop-color="#ffd700" stop-opacity="1"/>
-                </linearGradient>
-                <linearGradient id="goldGradRight" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#ffd700" stop-opacity="1"/>
-                    <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
-                </linearGradient>
-            </defs>
+    <!-- DESIGNED LINE FRAME ENCLOSING THE THREE MAIN HEADINGS -->
+    <div class="headings-frame">
+        <!-- SVG Corner Line Ornaments -->
+        <svg class="corner-flourish corner-tl" viewBox="0 0 32 32" fill="none">
+            <path d="M 0 12 L 0 0 L 12 0" stroke="#ffd700" stroke-width="3"/>
+            <path d="M 4 18 L 4 4 L 18 4" stroke="#ffd700" stroke-width="1.5"/>
+            <circle cx="2" cy="2" r="2" fill="#ffd700"/>
         </svg>
-    </div>
+        <svg class="corner-flourish corner-tr" viewBox="0 0 32 32" fill="none">
+            <path d="M 0 12 L 0 0 L 12 0" stroke="#ffd700" stroke-width="3"/>
+            <path d="M 4 18 L 4 4 L 18 4" stroke="#ffd700" stroke-width="1.5"/>
+            <circle cx="2" cy="2" r="2" fill="#ffd700"/>
+        </svg>
+        <svg class="corner-flourish corner-bl" viewBox="0 0 32 32" fill="none">
+            <path d="M 0 12 L 0 0 L 12 0" stroke="#ffd700" stroke-width="3"/>
+            <path d="M 4 18 L 4 4 L 18 4" stroke="#ffd700" stroke-width="1.5"/>
+            <circle cx="2" cy="2" r="2" fill="#ffd700"/>
+        </svg>
+        <svg class="corner-flourish corner-br" viewBox="0 0 32 32" fill="none">
+            <path d="M 0 12 L 0 0 L 12 0" stroke="#ffd700" stroke-width="3"/>
+            <path d="M 4 18 L 4 4 L 18 4" stroke="#ffd700" stroke-width="1.5"/>
+            <circle cx="2" cy="2" r="2" fill="#ffd700"/>
+        </svg>
 
-    <h2>Training and Placement Cell</h2>
-    <h3>Academic Year 2026-2027</h3>
+        <!-- Main Title (Heading 1) -->
+        <h1>Mahatma Gandhi Institute of Technology</h1>
+
+        <!-- Gold Floral Divider Line -->
+        <div class="heading-divider">
+            <svg viewBox="0 0 800 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 20 15 L 340 15" stroke="url(#goldGradLeft)" stroke-width="2" stroke-linecap="round"/>
+                <polygon points="350,15 355,11 360,15 355,19" fill="#ffd700"/>
+                <g transform="translate(400,15)">
+                    <path d="M 0 0 C -7 -8, 0 -17, 0 -17 C 0 -17, 7 -8, 0 0 Z" fill="#ffd700"/>
+                    <path d="M 0 0 C -7 8, 0 17, 0 17 C 0 17, 7 8, 0 0 Z" fill="#ffd700"/>
+                    <path d="M 0 0 C -8 -7, -17 0, -17 0 C -17 0, -8 7, 0 0 Z" fill="#ffd700"/>
+                    <path d="M 0 0 C 8 -7, 17 0, 17 0 C 17 0, 8 7, 0 0 Z" fill="#ffd700"/>
+                    <circle cx="-6" cy="-6" r="1.5" fill="#fcd34d"/>
+                    <circle cx="6" cy="-6" r="1.5" fill="#fcd34d"/>
+                    <circle cx="-6" cy="6" r="1.5" fill="#fcd34d"/>
+                    <circle cx="6" cy="6" r="1.5" fill="#fcd34d"/>
+                    <circle cx="0" cy="0" r="2.5" fill="#ffffff"/>
+                </g>
+                <polygon points="440,15 445,11 450,15 445,19" fill="#ffd700"/>
+                <path d="M 460 15 L 780 15" stroke="url(#goldGradRight)" stroke-width="2" stroke-linecap="round"/>
+                <defs>
+                    <linearGradient id="goldGradLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#ffd700" stop-opacity="0"/>
+                        <stop offset="100%" stop-color="#ffd700" stop-opacity="1"/>
+                    </linearGradient>
+                    <linearGradient id="goldGradRight" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#ffd700" stop-opacity="1"/>
+                        <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <!-- Subtitle (Heading 2) -->
+        <h2>Training and Placement Cell</h2>
+
+        <!-- Academic Year (Heading 3) -->
+        <h3>Academic Year 2026-2027</h3>
+    </div>
 </header>
 
 <!-- Main Dashboard Body -->
