@@ -26,13 +26,13 @@ body {
     overflow-x: hidden;
 }
 
-/* FULL-WIDTH HEADER CONTAINER */
+/* FULL-WIDTH HEADER CONTAINER (REDUCED TOP GAP & THIN BOTTOM BORDER) */
 .header-container {
     width: 100%;
     background: linear-gradient(135deg, #071638 0%, #0d2558 100%);
-    padding: 24px 15px 20px 15px;
+    padding: 10px 15px 14px 15px; /* Decreased top padding from 24px to 10px */
     text-align: center;
-    border-bottom: 4px solid #ffd700;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.4); /* Replaced thick 4px border with thin 1px line */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
@@ -71,7 +71,7 @@ body {
     100% { transform: scale(1.15); opacity: 1; }
 }
 
-/* HEADINGS WRAPPER (NO BOX LINES) */
+/* HEADINGS WRAPPER */
 .headings-wrapper {
     position: relative;
     z-index: 2;
@@ -91,27 +91,12 @@ h1, h2, h3, h4, .section-header h4 {
     font-size: 1.95rem;
     font-weight: 800;
     letter-spacing: -0.2px;
-    margin: 0 0 4px 0;
+    margin: 0 0 2px 0;
     line-height: 1.2;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
-/* SOLID SHARP-ENDED LINES WITH CENTER STAR SPARKLE DIVIDER */
-.star-sharp-divider {
-    margin: 6px auto 10px auto;
-    width: 100%;
-    max-width: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.star-sharp-divider svg {
-    width: 100%;
-    height: 20px;
-}
-
-/* SUBHEADINGS CLOSELY ALIGNED UNDER MAIN HEADING */
+/* SUBHEADINGS ALIGNED CLOSELY UNDER MAIN HEADING */
 .header-container h2 {
     color: #ffffff;
     font-size: 1.15rem;
@@ -125,14 +110,29 @@ h1, h2, h3, h4, .section-header h4 {
     color: #fde68a;
     font-size: 0.92rem;
     font-weight: 600;
-    margin: 0;
+    margin: 0 0 6px 0;
     letter-spacing: 0.6px;
+}
+
+/* STAR SPARKLE DIVIDER POSITIONED AT THE END OF ALL THREE HEADINGS */
+.star-sharp-divider {
+    margin: 8px auto 0 auto;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.star-sharp-divider svg {
+    width: 100%;
+    height: 20px;
 }
 
 /* MAIN WRAPPER */
 .main-wrapper {
     max-width: 1560px;
-    margin: 28px auto;
+    margin: 24px auto;
     padding: 0 16px;
 }
 
@@ -306,16 +306,22 @@ h1, h2, h3, h4, .section-header h4 {
     <svg class="star-sparkle star-3" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#ffd700"/></svg>
     <svg class="star-sparkle star-4" viewBox="0 0 24 24"><path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="#ffd700"/></svg>
 
-    <!-- HEADINGS AREA (NO BOX BORDERS) -->
+    <!-- HEADINGS AREA -->
     <div class="headings-wrapper">
         
-        <!-- Main Title (Heading 1) -->
+        <!-- Heading 1 -->
         <h1>Mahatma Gandhi Institute of Technology</h1>
 
-        <!-- SOLID SHARP-ENDED LINES WITH CENTER STAR SPARKLE DIVIDER -->
+        <!-- Heading 2 -->
+        <h2>Training and Placement Cell</h2>
+
+        <!-- Heading 3 -->
+        <h3>Academic Year 2026-2027</h3>
+
+        <!-- SOLID SHARP-ENDED LINES WITH CENTER STAR SPARKLE DIVIDER (Placing exact middle below all 3 headings) -->
         <div class="star-sharp-divider">
             <svg viewBox="0 0 500 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Left Solid Line (Sharp Ended at Left) -->
+                <!-- Left Solid Line (Tapered Sharp End) -->
                 <polygon points="20,12 230,10.5 230,13.5" fill="#ffd700"/>
                 
                 <!-- Center Star Sparkle Motif -->
@@ -325,16 +331,11 @@ h1, h2, h3, h4, .section-header h4 {
                     <path d="M 0 -5 Q 0 0 5 0 Q 0 0 0 5 Q 0 0 -5 0 Q 0 0 0 -5 Z" fill="#ffffff"/>
                 </g>
                 
-                <!-- Right Solid Line (Sharp Ended at Right) -->
+                <!-- Right Solid Line (Tapered Sharp End) -->
                 <polygon points="480,12 270,10.5 270,13.5" fill="#ffd700"/>
             </svg>
         </div>
 
-        <!-- Subtitle (Heading 2) shifted directly under main heading -->
-        <h2>Training and Placement Cell</h2>
-
-        <!-- Academic Year (Heading 3) shifted directly under Heading 2 -->
-        <h3>Academic Year 2026-2027</h3>
     </div>
 </header>
 
