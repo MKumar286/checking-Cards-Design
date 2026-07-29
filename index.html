@@ -16,23 +16,23 @@
     padding: 0;
 }
 
-/* SOLID BLUE AND GREEN GRADIENT PAGE BACKGROUND */
+/* UNIFORM DARK NAVY HEADER GRADIENT APPLIED TO ENTIRE PAGE */
 body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-    background: linear-gradient(135deg, #0d2558 0%, #1e40af 35%, #047857 75%, #10b981 100%);
+    background: linear-gradient(135deg, #071638 0%, #0d2558 100%);
     background-attachment: fixed;
     color: #0f172a;
     min-height: 100vh;
     overflow-x: hidden;
 }
 
-/* FULL-WIDTH HEADER CONTAINER (REDUCED TOP GAP & THIN BOTTOM BORDER) */
+/* FULL-WIDTH HEADER CONTAINER */
 .header-container {
     width: 100%;
-    background: linear-gradient(135deg, #071638 0%, #0d2558 100%);
-    padding: 10px 15px 14px 15px; /* Decreased top padding from 24px to 10px */
+    background: transparent; /* Seamless blend with body background */
+    padding: 10px 15px 14px 15px;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.4); /* Replaced thick 4px border with thin 1px line */
+    border-bottom: 1px solid rgba(255, 215, 0, 0.4);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
@@ -152,8 +152,8 @@ h1, h2, h3, h4, .section-header h4 {
     border-radius: 18px;
     padding: 0 0 14px 0;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
 /* LIGHT BLUE & GREEN GRADIENT EDGE-TO-EDGE SECTION HEADER */
@@ -318,7 +318,7 @@ h1, h2, h3, h4, .section-header h4 {
         <!-- Heading 3 -->
         <h3>Academic Year 2026-2027</h3>
 
-        <!-- SOLID SHARP-ENDED LINES WITH CENTER STAR SPARKLE DIVIDER (Placing exact middle below all 3 headings) -->
+        <!-- SOLID SHARP-ENDED LINES WITH CENTER STAR SPARKLE DIVIDER -->
         <div class="star-sharp-divider">
             <svg viewBox="0 0 500 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <!-- Left Solid Line (Tapered Sharp End) -->
